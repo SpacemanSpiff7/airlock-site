@@ -1342,10 +1342,11 @@ summary:focus-visible {
 .site-footer {
   position: relative;
   display: grid;
-  grid-template-columns: 1fr auto auto;
-  align-items: end;
+  grid-template-columns: 1fr auto;
+  align-items: center;
   gap: 2rem;
-  padding: 4.5rem max(1.5rem, calc((100vw - var(--max-width)) / 2));
+  padding: 2rem max(1.5rem, calc((100vw - var(--max-width)) / 2));
+  border-top: 1px solid rgb(166 214 255 / 12%);
   color: var(--sky);
   background: var(--night);
 }
@@ -1361,26 +1362,6 @@ summary:focus-visible {
   font-size: 0.85rem;
   font-weight: 700;
 }
-
-.footer-mark {
-  position: absolute;
-  top: -1.4rem;
-  left: max(1.5rem, calc((100vw - var(--max-width)) / 2));
-  display: flex;
-  align-items: flex-end;
-  gap: 0.35rem;
-}
-
-.footer-mark span {
-  display: block;
-  width: 1.1rem;
-  border-radius: 999px;
-  background: var(--coral);
-}
-
-.footer-mark span:nth-child(1) { height: 2.8rem; transform: rotate(-14deg); }
-.footer-mark span:nth-child(2) { height: 4.2rem; background: var(--gold); }
-.footer-mark span:nth-child(3) { height: 3.3rem; background: var(--violet); transform: rotate(12deg); }
 
 .tone-paper,
 .tone-sky {
@@ -2018,10 +1999,6 @@ summary:focus-visible {
   .principle-list {
     align-items: flex-start;
     flex-direction: column;
-  }
-
-  .copyright {
-    margin-top: 1rem !important;
   }
 
   .document-heading h1 {

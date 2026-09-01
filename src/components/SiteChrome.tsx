@@ -40,17 +40,11 @@ export function SiteChrome({ current, children, tone = 'night' }: SiteChromeProp
       </header>
       {children}
       <footer className="site-footer">
-        <div className="footer-mark" aria-hidden="true">
-          <span />
-          <span />
-          <span />
-        </div>
-        <p>Airlock for iPhone.</p>
+        <p className="copyright">© 2026 Airlock.</p>
         <div className="footer-links">
           <a href={link('privacy')}>Privacy</a>
           <a href={link('support')}>Support</a>
         </div>
-        <p className="copyright">© {new Date().getFullYear()} Airlock</p>
       </footer>
     </div>
   );
