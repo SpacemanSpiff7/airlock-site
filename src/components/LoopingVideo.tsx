@@ -22,18 +22,11 @@ export function LoopingVideo({ src, poster, label, children }: LoopingVideoProps
 
     const syncPlayback = () => {
       const shouldPlay = isVisible && isPageVisible && !reducedMotion.matches;
-      section.classList.toggle('is-playing', shouldPlay);
 
       if (shouldPlay) {
-        void video.play().catch(() => section.classList.remove('is-playing'));
+        void video.play().catch(() => undefined);
       } else {
         video.pause();
-      }
-    };
-
-    const handleMetadata = () => {
-      if (Number.isFinite(video.duration)) {
-        section.style.setProperty('--video-loop-duration', `${video.duration}s`);
       }
     };
 
@@ -50,15 +43,12 @@ export function LoopingVideo({ src, poster, label, children }: LoopingVideoProps
       syncPlayback();
     };
 
-    video.addEventListener('loadedmetadata', handleMetadata);
     document.addEventListener('visibilitychange', handleVisibility);
     reducedMotion.addEventListener('change', syncPlayback);
     observer.observe(section);
-    handleMetadata();
     syncPlayback();
 
     return () => {
-      video.removeEventListener('loadedmetadata', handleMetadata);
       document.removeEventListener('visibilitychange', handleVisibility);
       reducedMotion.removeEventListener('change', syncPlayback);
       observer.disconnect();
@@ -71,7 +61,6 @@ export function LoopingVideo({ src, poster, label, children }: LoopingVideoProps
       <div className="loop-story-copy">{children}</div>
       <div className="loop-story-media">
         <div className="phone-frame looping-phone-frame">
-          <img className="looping-video-poster" src={poster} alt="" aria-hidden="true" />
           <video
             ref={videoRef}
             src={src}

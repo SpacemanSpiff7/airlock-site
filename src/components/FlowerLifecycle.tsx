@@ -12,6 +12,10 @@ const stages: Array<{ name: FlowerStage; label: string; detail: string }> = [
 const petalColors = ['#f08b83', '#c675ae', '#735ac7', '#a6d6ff', '#f4b860', '#f08b83'];
 
 const clamp = (value: number) => Math.min(1, Math.max(0, value));
+const smoothstep = (value: number) => {
+  const bounded = clamp(value);
+  return bounded * bounded * (3 - 2 * bounded);
+};
 
 export function FlowerLifecycle() {
   const sectionRef = useRef<HTMLElement | null>(null);
@@ -31,20 +35,20 @@ export function FlowerLifecycle() {
     };
 
     const setFlowerProgress = (progress: number) => {
-      const health = progress < 0.36
-        ? 1 - clamp((progress - 0.12) / 0.22)
-        : clamp((progress - 0.52) / 0.3);
+      const health = progress < 0.38
+        ? 1 - smoothstep((progress - 0.06) / 0.22)
+        : smoothstep((progress - 0.38) / 0.28);
       const wilt = 1 - health;
-      const glow = clamp((progress - 0.72) / 0.18);
+      const glow = smoothstep((progress - 0.56) / 0.18);
 
       section.style.setProperty('--flower-progress', progress.toFixed(3));
       section.style.setProperty('--flower-health', health.toFixed(3));
       section.style.setProperty('--flower-wilt', wilt.toFixed(3));
       section.style.setProperty('--flower-glow', glow.toFixed(3));
 
-      const nextStage: FlowerStage = progress < 0.2
+      const nextStage: FlowerStage = progress < 0.18
         ? 'healthy'
-        : progress < 0.7
+        : progress < 0.6
           ? 'wilted'
           : 'thriving';
 
