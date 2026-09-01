@@ -3,6 +3,8 @@ import breatheScreen from '../assets/screens/breathe.png';
 import dayScreen from '../assets/screens/day.png';
 import greenhouseScreen from '../assets/screens/greenhouse.png';
 import CurvedLoop from '../components/CurvedLoop';
+import { BreathingDemo } from '../components/BreathingDemo';
+import { FlowerLifecycle } from '../components/FlowerLifecycle';
 import GhostFibers from '../components/GhostFibers';
 import { PhoneFrame } from '../components/PhoneFrame';
 import { SiteChrome } from '../components/SiteChrome';
@@ -66,6 +68,8 @@ export function HomePage() {
           />
         </div>
 
+        <BreathingDemo />
+
         <section className="ritual" id="how-it-works" aria-labelledby="ritual-title">
           <div className="ritual-intro">
             <p className="section-number">01 — 03</p>
@@ -103,14 +107,9 @@ export function HomePage() {
           </article>
         </section>
 
+        <FlowerLifecycle />
+
         <section className="principles" aria-labelledby="principles-title">
-          <div className="principles-flower" aria-hidden="true">
-            <span />
-            <span />
-            <span />
-            <span />
-            <span />
-          </div>
           <p className="section-number">Private by design</p>
           <h2 id="principles-title">Your Airlock activity stays on your iPhone.</h2>
           <div className="principle-list">
