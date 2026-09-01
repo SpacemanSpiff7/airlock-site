@@ -36,8 +36,7 @@ export function SupportPage() {
           <details>
             <summary>Where is my data?</summary>
             <p>
-              On your iPhone. Airlock has no account, cloud sync, analytics, advertising SDKs, or server copy of
-              your app activity.
+              On your iPhone. Airlock does not send us a copy of your app activity.
             </p>
           </details>
 

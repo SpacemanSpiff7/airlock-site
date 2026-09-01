@@ -120,7 +120,7 @@ export function HomePage() {
             <p>No account</p>
             <p>No analytics</p>
             <p>No ads</p>
-            <p>No cloud sync</p>
+            <p>Stays on your iPhone</p>
           </div>
           <a className="round-link" href="./privacy/">
             Read the privacy policy <span aria-hidden="true">↗</span>

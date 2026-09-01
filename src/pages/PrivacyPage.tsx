@@ -18,7 +18,7 @@ export function PrivacyPage() {
             <h2>The short version</h2>
             <p>
               Airlock does not collect personal data. The app has no accounts, analytics, advertising SDKs,
-              third-party trackers, cloud sync, subscriptions, or in-app purchases.
+              third-party trackers, subscriptions, or in-app purchases.
             </p>
           </section>
 
