@@ -45,7 +45,7 @@ export function SiteChrome({ current, children, tone = 'night' }: SiteChromeProp
           <span />
           <span />
         </div>
-        <p>Made for a more intentional minute.</p>
+        <p>Airlock for iPhone.</p>
         <div className="footer-links">
           <a href={link('privacy')}>Privacy</a>
           <a href={link('support')}>Support</a>

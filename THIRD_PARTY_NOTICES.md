@@ -16,3 +16,9 @@ Bagel Fat One is licensed under the SIL Open Font License 1.1.
 ## Plus Jakarta Sans
 
 Plus Jakarta Sans is licensed under the SIL Open Font License 1.1.
+
+## Familjen Grotesk
+
+Familjen Grotesk was designed by Anders Wikström, Jonas Bäckman, Matilda Gysing, Kristian Möller,
+and Örjan Nordling of Familjen STHLM AB. It is licensed under the SIL Open Font License 1.1.
+The license and author list are included beside the self-hosted font files.

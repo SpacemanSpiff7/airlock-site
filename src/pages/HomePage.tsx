@@ -44,7 +44,7 @@ export function HomePage() {
             <h1 id="hero-title">Airlock</h1>
             <p className="hero-line">Breathe before you scroll.</p>
             <p className="hero-explainer">
-              Guided breathing turns intentional time into temporary Airtime for the apps and sites you choose.
+              Guided breathing earns Airtime: short access to the apps and sites you choose.
             </p>
             <a className="text-link" href="#how-it-works">
               See how it works <span aria-hidden="true">↓</span>
@@ -54,14 +54,11 @@ export function HomePage() {
             <div className="emblem-shadow" aria-hidden="true" />
             <img src={appIcon} alt="Airlock’s flower app icon" />
           </div>
-          <p className="hero-note" aria-hidden="true">
-            a small ritual<br />before the feed
-          </p>
         </section>
 
         <div className="flow-bridge">
           <CurvedLoop
-            marqueeText="inhale  ·  make space  ·  exhale  ·  choose  ·  "
+            marqueeText="breathe  ·  earn Airtime  ·  choose an unlock  ·  protection returns  ·  "
             speed={0.22}
             curveAmount={74}
             direction="right"
@@ -72,14 +69,14 @@ export function HomePage() {
         <section className="ritual" id="how-it-works" aria-labelledby="ritual-title">
           <div className="ritual-intro">
             <p className="section-number">01 — 03</p>
-            <h2 id="ritual-title">Three quiet steps.</h2>
+            <h2 id="ritual-title">How Airlock works.</h2>
           </div>
 
           <article className="ritual-step step-breathe">
             <div className="step-copy">
               <p className="step-number">01</p>
               <h3>Breathe</h3>
-              <p>Take one guided minute. No camera, microphone, or wearable required.</p>
+              <p>Finish a guided breathing session to earn Airtime.</p>
             </div>
             <PhoneFrame src={breatheScreen} alt="Airlock’s guided breathing screen" />
             <span className="poster-word" aria-hidden="true">in</span>
@@ -90,7 +87,7 @@ export function HomePage() {
             <div className="step-copy">
               <p className="step-number">02</p>
               <h3>Use Airtime</h3>
-              <p>Spend what you earned on a short, deliberate unlock.</p>
+              <p>Choose an unlock time, then open your selected apps and sites.</p>
             </div>
             <span className="poster-word" aria-hidden="true">out</span>
           </article>
@@ -99,7 +96,7 @@ export function HomePage() {
             <div className="step-copy">
               <p className="step-number">03</p>
               <h3>Protection returns</h3>
-              <p>When Airtime ends, your chosen blocks settle back into place.</p>
+              <p>When the timer ends, Airlock blocks them again.</p>
             </div>
             <PhoneFrame src={greenhouseScreen} alt="Airlock’s protection and Airtime screen" />
             <span className="poster-word" aria-hidden="true">again</span>
@@ -114,13 +111,12 @@ export function HomePage() {
             <span />
             <span />
           </div>
-          <p className="section-number">Built this way on purpose</p>
-          <h2 id="principles-title">Local. Private. A little playful.</h2>
+          <p className="section-number">Private by design</p>
+          <h2 id="principles-title">Your Airlock activity stays on your iPhone.</h2>
           <div className="principle-list">
             <p>No account</p>
-            <p>No analytics</p>
+            <p>No tracking</p>
             <p>No ads</p>
-            <p>Stays on your iPhone</p>
           </div>
           <a className="round-link" href="./privacy/">
             Read the privacy policy <span aria-hidden="true">↗</span>

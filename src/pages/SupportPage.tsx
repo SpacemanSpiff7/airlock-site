@@ -5,9 +5,9 @@ export function SupportPage() {
     <SiteChrome current="support" tone="sky">
       <main id="main" className="support-main">
         <header className="support-heading">
-          <p className="eyebrow">Airlock support</p>
-          <h1>Let’s get you unstuck.</h1>
-          <p>Send a note and include your iOS version, Airlock version, and what happened just before the problem.</p>
+          <p className="eyebrow">Support</p>
+          <h1>Tell us what happened.</h1>
+          <p>Include your iOS version, Airlock version, and the steps that led to the problem.</p>
           <a className="email-link" href="mailto:contact@curlbro.com?subject=Airlock%20support">
             contact@curlbro.com <span aria-hidden="true">↗</span>
           </a>
@@ -15,21 +15,21 @@ export function SupportPage() {
 
         <section className="faq" aria-labelledby="faq-title">
           <p className="section-number">Common questions</p>
-          <h2 id="faq-title">A few useful answers.</h2>
+          <h2 id="faq-title">Common questions.</h2>
 
           <details>
             <summary>Why does Airlock need Screen Time permission?</summary>
             <p>
-              Airlock uses Apple’s Screen Time frameworks to shield only the apps and web domains you select. You
-              can change or revoke that authorization in iOS Settings.
+              Airlock uses Apple’s Screen Time permission to block only the apps and websites you select. You can
+              change that permission in iOS Settings.
             </p>
           </details>
 
           <details>
             <summary>Does Airlock watch or record me breathing?</summary>
             <p>
-              No. Breathing is honor-system only. Airlock does not use your camera, microphone, motion sensors, or
-              HealthKit.
+              No. Airlock guides the timing but does not watch or record you. It does not use your camera,
+              microphone, motion sensors, or HealthKit.
             </p>
           </details>
 
@@ -41,18 +41,18 @@ export function SupportPage() {
           </details>
 
           <details>
-            <summary>A shield or notification did not behave as expected.</summary>
+            <summary>An app did not block or reopen correctly.</summary>
             <p>
-              Confirm that Screen Time and notification permissions are enabled for Airlock, then restart the app.
-              If it continues, email us with your iPhone model and iOS version.
+              Check that Screen Time and Notifications are allowed for Airlock, then restart the app. If the problem
+              continues, email us with your iPhone model and iOS version.
             </p>
           </details>
 
           <details>
             <summary>How do I report a bug?</summary>
             <p>
-              Email the address above with the steps you took, what you expected, what happened instead, and a
-              screenshot if it is helpful. Please do not include sensitive information.
+              Tell us what you did, what you expected, and what happened. Add a screenshot only if it helps, and
+              leave out private information.
             </p>
           </details>
         </section>

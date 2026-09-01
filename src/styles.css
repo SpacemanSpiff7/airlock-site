@@ -30,6 +30,14 @@
   font-weight: 700;
 }
 
+@font-face {
+  font-family: 'Familjen Grotesk';
+  src: url('./assets/fonts/FamiljenGrotesk-Bold.woff2') format('woff2');
+  font-display: swap;
+  font-style: normal;
+  font-weight: 700;
+}
+
 :root {
   color: #f5dcc8;
   background: #001934;
@@ -330,20 +338,6 @@ summary:focus-visible {
   animation: orbit-two-breathe 8s cubic-bezier(0.45, 0, 0.3, 1) infinite;
 }
 
-.hero-note {
-  position: absolute;
-  right: max(1.5rem, calc((100vw - var(--max-width)) / 2));
-  bottom: 2.3rem;
-  z-index: 4;
-  margin: 0;
-  color: var(--gold);
-  font-family: 'Bagel Fat One', sans-serif;
-  font-size: 1.05rem;
-  line-height: 0.95;
-  text-align: right;
-  transform: rotate(-7deg);
-}
-
 .flow-bridge {
   position: relative;
   z-index: 2;
@@ -384,11 +378,10 @@ summary:focus-visible {
 
 .flow-bridge-text {
   fill: currentColor;
-  font-family: 'Bagel Fat One', sans-serif;
+  font-family: 'Familjen Grotesk', 'Plus Jakarta Sans', sans-serif;
   font-size: clamp(4.2rem, 7.4vw, 7.8rem);
-  font-weight: 400;
-  letter-spacing: 0.005em;
-  text-transform: lowercase;
+  font-weight: 700;
+  letter-spacing: -0.02em;
 }
 
 .ritual {
@@ -439,11 +432,11 @@ summary:focus-visible {
 .principles h2,
 .faq h2 {
   margin: 0;
-  font-family: 'Bagel Fat One', sans-serif;
-  font-size: clamp(3.2rem, 8vw, 7rem);
-  font-weight: 400;
-  letter-spacing: -0.034em;
-  line-height: 0.86;
+  font-family: 'Familjen Grotesk', 'Plus Jakarta Sans', sans-serif;
+  font-size: clamp(3.2rem, 7.4vw, 6.7rem);
+  font-weight: 700;
+  letter-spacing: -0.045em;
+  line-height: 0.92;
 }
 
 .ritual-step {
@@ -477,11 +470,11 @@ summary:focus-visible {
 
 .step-copy h3 {
   margin: 0.35em 0 0.2em;
-  font-family: 'Bagel Fat One', sans-serif;
-  font-size: clamp(4.2rem, 9vw, 8rem);
-  font-weight: 400;
-  letter-spacing: -0.032em;
-  line-height: 0.8;
+  font-family: 'Familjen Grotesk', 'Plus Jakarta Sans', sans-serif;
+  font-size: clamp(4.2rem, 8vw, 7.2rem);
+  font-weight: 700;
+  letter-spacing: -0.05em;
+  line-height: 0.88;
 }
 
 .step-copy > p:last-child {
@@ -534,11 +527,11 @@ summary:focus-visible {
   position: absolute;
   z-index: 1;
   color: var(--violet);
-  font-family: 'Bagel Fat One', sans-serif;
+  font-family: 'Familjen Grotesk', 'Plus Jakarta Sans', sans-serif;
   font-size: clamp(8rem, 25vw, 25rem);
   letter-spacing: -0.1em;
   line-height: 0.7;
-  opacity: 0.18;
+  opacity: 0.12;
   pointer-events: none;
 }
 
@@ -736,11 +729,11 @@ summary:focus-visible {
 .document-heading h1,
 .support-heading h1 {
   margin: 0;
-  font-family: 'Bagel Fat One', sans-serif;
-  font-size: clamp(6rem, 15vw, 12rem);
-  font-weight: 400;
-  letter-spacing: -0.035em;
-  line-height: 0.76;
+  font-family: 'Familjen Grotesk', 'Plus Jakarta Sans', sans-serif;
+  font-size: clamp(5.5rem, 13vw, 10.5rem);
+  font-weight: 700;
+  letter-spacing: -0.055em;
+  line-height: 0.82;
 }
 
 .document-lede {
@@ -888,7 +881,8 @@ summary:focus-visible {
 }
 
 .faq summary::after {
-  font-family: 'Bagel Fat One', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 600;
   font-size: 1.9rem;
   content: '+';
   line-height: 1;
@@ -1001,10 +995,6 @@ summary:focus-visible {
     width: min(72vw, 330px);
     min-width: 0;
     justify-self: end;
-  }
-
-  .hero-note {
-    display: none;
   }
 
   .orbit-one {
