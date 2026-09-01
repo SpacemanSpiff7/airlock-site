@@ -1,5 +1,4 @@
-import { useEffect, useRef, useState, type CSSProperties } from 'react';
-import { FlowerSparks } from './FlowerSparks';
+import { useEffect, useRef, useState } from 'react';
 
 type FlowerStage = 'healthy' | 'wilted' | 'thriving';
 
@@ -9,16 +8,21 @@ const stages: Array<{ name: FlowerStage; label: string; detail: string }> = [
   { name: 'thriving', label: 'Thriving', detail: 'Fully grown, glowing, and a little playful.' }
 ];
 
-const petalColors = ['#f08b83', '#c675ae', '#735ac7', '#a6d6ff', '#f4b860', '#f08b83'];
+const flowerFrames = Object.entries(
+  import.meta.glob('../assets/flower-promo/flower-*.webp', {
+    eager: true,
+    import: 'default',
+    query: '?url'
+  }) as Record<string, string>
+)
+  .sort(([firstPath], [secondPath]) => firstPath.localeCompare(secondPath))
+  .map(([, source]) => source);
 
 const clamp = (value: number) => Math.min(1, Math.max(0, value));
-const smoothstep = (value: number) => {
-  const bounded = clamp(value);
-  return bounded * bounded * (3 - 2 * bounded);
-};
 
 export function FlowerLifecycle() {
   const sectionRef = useRef<HTMLElement | null>(null);
+  const flowerFrameRef = useRef<HTMLImageElement | null>(null);
   const [stage, setStage] = useState<FlowerStage>('healthy');
 
   useEffect(() => {
@@ -27,28 +31,31 @@ export function FlowerLifecycle() {
 
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
     let animationFrame = 0;
-    let isVisible = true;
-    let isPageVisible = !document.hidden;
+    let currentFrameIndex = -1;
 
-    const syncAnimation = () => {
-      section.classList.toggle('is-animated', isVisible && isPageVisible && !reducedMotion.matches);
-    };
+    flowerFrames.forEach(source => {
+      const image = new Image();
+      image.decoding = 'async';
+      image.src = source;
+    });
 
     const setFlowerProgress = (progress: number) => {
-      const health = progress < 0.38
-        ? 1 - smoothstep((progress - 0.06) / 0.22)
-        : smoothstep((progress - 0.38) / 0.28);
-      const wilt = 1 - health;
-      const glow = smoothstep((progress - 0.56) / 0.18);
+      const frameIndex = Math.min(
+        flowerFrames.length - 1,
+        Math.round(progress * (flowerFrames.length - 1))
+      );
 
       section.style.setProperty('--flower-progress', progress.toFixed(3));
-      section.style.setProperty('--flower-health', health.toFixed(3));
-      section.style.setProperty('--flower-wilt', wilt.toFixed(3));
-      section.style.setProperty('--flower-glow', glow.toFixed(3));
 
-      const nextStage: FlowerStage = progress < 0.18
+      if (frameIndex !== currentFrameIndex && flowerFrameRef.current) {
+        currentFrameIndex = frameIndex;
+        flowerFrameRef.current.src = flowerFrames[frameIndex];
+        flowerFrameRef.current.dataset.frame = String(frameIndex);
+      }
+
+      const nextStage: FlowerStage = progress < 0.2
         ? 'healthy'
-        : progress < 0.6
+        : progress < 0.66
           ? 'wilted'
           : 'thriving';
 
@@ -71,39 +78,20 @@ export function FlowerLifecycle() {
       if (!animationFrame) animationFrame = requestAnimationFrame(update);
     };
 
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        isVisible = entry.isIntersecting;
-        syncAnimation();
-      },
-      { threshold: 0 }
-    );
-
-    const handleVisibility = () => {
-      isPageVisible = !document.hidden;
-      syncAnimation();
-    };
-
     const handleMotion = () => {
-      syncAnimation();
       requestUpdate();
     };
 
     window.addEventListener('scroll', requestUpdate, { passive: true });
     window.addEventListener('resize', requestUpdate);
-    document.addEventListener('visibilitychange', handleVisibility);
     reducedMotion.addEventListener('change', handleMotion);
-    observer.observe(section);
-    syncAnimation();
     requestUpdate();
 
     return () => {
       if (animationFrame) cancelAnimationFrame(animationFrame);
       window.removeEventListener('scroll', requestUpdate);
       window.removeEventListener('resize', requestUpdate);
-      document.removeEventListener('visibilitychange', handleVisibility);
       reducedMotion.removeEventListener('change', handleMotion);
-      observer.disconnect();
     };
   }, []);
 
@@ -130,28 +118,15 @@ export function FlowerLifecycle() {
             role="img"
             aria-label="One possible set of flower states: healthy, wilted, and thriving"
           >
-            <FlowerSparks active={stage === 'thriving'} />
-            <div className="flower-aura" aria-hidden="true" />
-            <div className="flower-ground" aria-hidden="true" />
-            <div className="flower-plant" aria-hidden="true">
-              <span className="flower-stem" />
-              <span className="flower-leaf flower-leaf-left" />
-              <span className="flower-leaf flower-leaf-right" />
-              <div className="flower-head">
-                {petalColors.map((color, index) => (
-                  <span
-                    key={`${color}-${index}`}
-                    className="flower-petal"
-                    style={{
-                      '--petal-angle': `${index * 60}deg`,
-                      '--petal-color': color
-                    } as CSSProperties}
-                  />
-                ))}
-                <span className="flower-center" />
-                <span className="flower-center-dot" />
-              </div>
-            </div>
+            <img
+              ref={flowerFrameRef}
+              className="flower-promo-frame"
+              src={flowerFrames[0]}
+              alt=""
+              aria-hidden="true"
+              decoding="async"
+              draggable="false"
+            />
           </div>
 
           <ol className="flower-stages" aria-label="Flower lifecycle">
