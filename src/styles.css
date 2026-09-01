@@ -676,9 +676,11 @@ summary:focus-visible {
 }
 
 .flower-lifecycle {
-  --flower-progress: 0;
+  --healthy-screen-opacity: 1;
+  --thriving-screen-opacity: 0;
+  --wilted-screen-opacity: 0;
   position: relative;
-  height: 210svh;
+  height: 185svh;
   color: var(--paper);
   background:
     radial-gradient(circle at 85% 4%, rgb(84 83 200 / 23%), transparent 28rem),
@@ -740,10 +742,10 @@ summary:focus-visible {
 
 .flower-stages {
   display: grid;
-  width: min(100%, 660px);
+  width: min(100%, 480px);
   grid-template-columns: repeat(3, 1fr);
   gap: 0.45rem;
-  margin: 0.15rem 0 0;
+  margin: 0.7rem 0 0;
   padding: 0;
   list-style: none;
 }
@@ -795,21 +797,53 @@ summary:focus-visible {
   line-height: 1.45;
 }
 
-.flower-artwork {
+.phone-frame.flower-phone-frame {
   position: relative;
-  width: min(54vw, 750px);
-  aspect-ratio: 1 / 1.02;
+  width: min(31vw, 32svh, 350px);
   justify-self: center;
+  padding: 0.42rem;
+  animation: none;
   contain: layout paint;
+  transform: translateZ(0);
 }
 
-.flower-promo-frame {
+.flower-screen-stack {
+  position: relative;
+  aspect-ratio: 1206 / 2622;
+  overflow: hidden;
+  border-radius: 2.48rem;
+  background: #061b34;
+  transform: translateZ(0);
+}
+
+.flower-screen {
+  position: absolute;
+  inset: 0;
   display: block;
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  border-radius: inherit;
+  object-fit: cover;
+  backface-visibility: hidden;
   pointer-events: none;
+  transform: translateZ(0);
   user-select: none;
+  will-change: opacity;
+}
+
+.flower-screen-healthy {
+  z-index: 1;
+  opacity: var(--healthy-screen-opacity);
+}
+
+.flower-screen-wilted {
+  z-index: 2;
+  opacity: var(--wilted-screen-opacity);
+}
+
+.flower-screen-thriving {
+  z-index: 3;
+  opacity: var(--thriving-screen-opacity);
 }
 
 .product-story {
@@ -1566,16 +1600,16 @@ summary:focus-visible {
   }
 
   .flower-lifecycle {
-    height: 205svh;
+    height: 180svh;
   }
 
   .flower-lifecycle-sticky {
     min-height: 100svh;
     grid-template-columns: 1fr;
-    grid-template-rows: auto minmax(390px, 1fr);
+    grid-template-rows: auto minmax(0, 1fr);
     align-items: start;
-    gap: 1rem;
-    padding: 5.5rem 1.25rem 1.5rem;
+    gap: 0.75rem;
+    padding: 4.75rem 1.25rem 1.25rem;
   }
 
   .flower-lifecycle-copy h2 {
@@ -1590,9 +1624,9 @@ summary:focus-visible {
   }
 
   .flower-stages {
-    width: min(100%, 540px);
+    width: min(100%, 430px);
     grid-template-columns: repeat(3, 1fr);
-    margin-top: 0.25rem;
+    margin-top: 0.5rem;
   }
 
   .flower-stages li {
@@ -1615,15 +1649,13 @@ summary:focus-visible {
     font-size: clamp(0.68rem, 2.5vw, 0.88rem);
   }
 
-  .flower-artwork {
-    width: min(100%, 540px);
-    min-height: 330px;
-    aspect-ratio: 1 / 1.02;
+  .phone-frame.flower-phone-frame {
+    width: min(54vw, 23svh, 220px);
   }
 
   .flower-visual-column {
     align-self: stretch;
-    align-content: center;
+    align-content: start;
   }
 
   .product-story {
@@ -1747,7 +1779,7 @@ summary:focus-visible {
   }
 
   .flower-lifecycle-sticky {
-    padding-top: 4.5rem;
+    padding-top: 4.25rem;
   }
 
   .flower-lifecycle-copy h2 {

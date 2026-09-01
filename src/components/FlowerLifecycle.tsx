@@ -1,28 +1,26 @@
 import { useEffect, useRef, useState } from 'react';
 
+import healthyScreen from '../assets/flower-screen-healthy.webp';
+import thrivingScreen from '../assets/flower-screen-thriving.webp';
+import wiltedScreen from '../assets/flower-screen-wilted.webp';
+
 type FlowerStage = 'healthy' | 'wilted' | 'thriving';
 
 const stages: Array<{ name: FlowerStage; label: string; detail: string }> = [
   { name: 'healthy', label: 'Healthy', detail: 'Colorful and upright.' },
-  { name: 'wilted', label: 'Wilted', detail: 'Sustained heavy Airtime use can soften its color and posture.' },
-  { name: 'thriving', label: 'Thriving', detail: 'Fully grown, glowing, and a little playful.' }
+  { name: 'wilted', label: 'Wilted', detail: 'Heavy Airtime use can soften its color and posture.' },
+  { name: 'thriving', label: 'Thriving', detail: 'Breathing can help it grow fuller and glow.' }
 ];
-
-const flowerFrames = Object.entries(
-  import.meta.glob('../assets/flower-promo/flower-*.webp', {
-    eager: true,
-    import: 'default',
-    query: '?url'
-  }) as Record<string, string>
-)
-  .sort(([firstPath], [secondPath]) => firstPath.localeCompare(secondPath))
-  .map(([, source]) => source);
 
 const clamp = (value: number) => Math.min(1, Math.max(0, value));
 
+const smoothstep = (start: number, end: number, value: number) => {
+  const progress = clamp((value - start) / (end - start));
+  return progress * progress * (3 - 2 * progress);
+};
+
 export function FlowerLifecycle() {
   const sectionRef = useRef<HTMLElement | null>(null);
-  const flowerFrameRef = useRef<HTMLImageElement | null>(null);
   const [stage, setStage] = useState<FlowerStage>('healthy');
 
   useEffect(() => {
@@ -31,31 +29,18 @@ export function FlowerLifecycle() {
 
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
     let animationFrame = 0;
-    let currentFrameIndex = -1;
-
-    flowerFrames.forEach(source => {
-      const image = new Image();
-      image.decoding = 'async';
-      image.src = source;
-    });
 
     const setFlowerProgress = (progress: number) => {
-      const frameIndex = Math.min(
-        flowerFrames.length - 1,
-        Math.round(progress * (flowerFrames.length - 1))
-      );
+      const wiltedIn = smoothstep(0.12, 0.2, progress);
+      const recovery = smoothstep(0.52, 0.62, progress);
 
-      section.style.setProperty('--flower-progress', progress.toFixed(3));
+      section.style.setProperty('--healthy-screen-opacity', (1 - wiltedIn).toFixed(3));
+      section.style.setProperty('--wilted-screen-opacity', (wiltedIn * (1 - recovery)).toFixed(3));
+      section.style.setProperty('--thriving-screen-opacity', recovery.toFixed(3));
 
-      if (frameIndex !== currentFrameIndex && flowerFrameRef.current) {
-        currentFrameIndex = frameIndex;
-        flowerFrameRef.current.src = flowerFrames[frameIndex];
-        flowerFrameRef.current.dataset.frame = String(frameIndex);
-      }
-
-      const nextStage: FlowerStage = progress < 0.2
+      const nextStage: FlowerStage = progress < 0.18
         ? 'healthy'
-        : progress < 0.66
+        : progress < 0.58
           ? 'wilted'
           : 'thriving';
 
@@ -78,20 +63,16 @@ export function FlowerLifecycle() {
       if (!animationFrame) animationFrame = requestAnimationFrame(update);
     };
 
-    const handleMotion = () => {
-      requestUpdate();
-    };
-
     window.addEventListener('scroll', requestUpdate, { passive: true });
     window.addEventListener('resize', requestUpdate);
-    reducedMotion.addEventListener('change', handleMotion);
+    reducedMotion.addEventListener('change', requestUpdate);
     requestUpdate();
 
     return () => {
       if (animationFrame) cancelAnimationFrame(animationFrame);
       window.removeEventListener('scroll', requestUpdate);
       window.removeEventListener('resize', requestUpdate);
-      reducedMotion.removeEventListener('change', handleMotion);
+      reducedMotion.removeEventListener('change', requestUpdate);
     };
   }, []);
 
@@ -104,7 +85,7 @@ export function FlowerLifecycle() {
     >
       <div className="flower-lifecycle-sticky">
         <div className="flower-lifecycle-copy">
-          <p className="section-number">The daily flower · scroll through an example</p>
+          <p className="section-number">The daily flower · shown faster than real time</p>
           <h2 id="flower-lifecycle-title">The flower can change as the day goes.</h2>
           <p className="flower-lifecycle-lede">
             Breathing helps today’s flower grow. Its health reflects the Airtime you use and the Airtime that expires
@@ -114,19 +95,36 @@ export function FlowerLifecycle() {
 
         <div className="flower-visual-column">
           <div
-            className="flower-artwork"
+            className="phone-frame flower-phone-frame"
             role="img"
-            aria-label="One possible set of flower states: healthy, wilted, and thriving"
+            aria-label="The Airlock Day screen moving from a healthy flower to wilted, then thriving"
           >
-            <img
-              ref={flowerFrameRef}
-              className="flower-promo-frame"
-              src={flowerFrames[0]}
-              alt=""
-              aria-hidden="true"
-              decoding="async"
-              draggable="false"
-            />
+            <div className="flower-screen-stack" aria-hidden="true">
+              <img
+                className="flower-screen flower-screen-healthy"
+                src={healthyScreen}
+                alt=""
+                decoding="async"
+                fetchPriority="high"
+                draggable="false"
+              />
+              <img
+                className="flower-screen flower-screen-wilted"
+                src={wiltedScreen}
+                alt=""
+                decoding="async"
+                loading="eager"
+                draggable="false"
+              />
+              <img
+                className="flower-screen flower-screen-thriving"
+                src={thrivingScreen}
+                alt=""
+                decoding="async"
+                loading="eager"
+                draggable="false"
+              />
+            </div>
           </div>
 
           <ol className="flower-stages" aria-label="Flower lifecycle">
