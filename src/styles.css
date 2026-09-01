@@ -681,7 +681,7 @@ summary:focus-visible {
   --flower-wilt: 0;
   --flower-glow: 0;
   position: relative;
-  height: 330svh;
+  height: 290svh;
   color: var(--paper);
   background:
     radial-gradient(circle at 85% 4%, rgb(84 83 200 / 23%), transparent 28rem),
@@ -733,29 +733,38 @@ summary:focus-visible {
   line-height: 1.6;
 }
 
+.flower-visual-column {
+  position: relative;
+  z-index: 3;
+  display: grid;
+  min-width: 0;
+  justify-items: center;
+}
+
 .flower-stages {
-  max-width: 32rem;
-  margin: 2.5rem 0 0;
+  display: grid;
+  width: min(100%, 660px);
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.45rem;
+  margin: 0.15rem 0 0;
   padding: 0;
   list-style: none;
 }
 
 .flower-stages li {
   position: relative;
-  display: grid;
-  grid-template-columns: minmax(7rem, 0.42fr) 1fr;
-  gap: 1rem;
-  padding: 0.86rem 0 0.86rem 1.5rem;
+  min-width: 0;
+  padding: 0.85rem 0.7rem 0.75rem 1.45rem;
   border-top: 1px solid rgb(166 214 255 / 24%);
   opacity: 0.3;
-  transform: translateX(0);
+  transform: translateY(0);
   transition: opacity 260ms ease, transform 260ms ease;
 }
 
 .flower-stages li::before {
   position: absolute;
-  top: 1.34rem;
-  left: 0;
+  top: 1.13rem;
+  left: 0.32rem;
   width: 0.5rem;
   height: 0.5rem;
   border: 1px solid currentColor;
@@ -765,7 +774,7 @@ summary:focus-visible {
 
 .flower-stages li.is-active {
   opacity: 1;
-  transform: translateX(0.5rem);
+  transform: translateY(-0.3rem);
 }
 
 .flower-stages li.is-active::before {
@@ -775,12 +784,15 @@ summary:focus-visible {
 }
 
 .flower-stages span {
+  display: block;
   font-weight: 700;
 }
 
 .flower-stages small {
+  display: block;
+  margin-top: 0.36rem;
   color: var(--sky);
-  font-size: 0.78rem;
+  font-size: 0.72rem;
   line-height: 1.45;
 }
 
@@ -1037,8 +1049,7 @@ summary:focus-visible {
 }
 
 .product-story-intro,
-.story-row,
-.scroll-story-sticky {
+.story-row {
   width: min(calc(100% - 3rem), var(--max-width));
   margin-inline: auto;
 }
@@ -1075,8 +1086,7 @@ summary:focus-visible {
   line-height: 1.65;
 }
 
-.story-row,
-.scroll-story-sticky {
+.story-row {
   position: relative;
   z-index: 2;
   display: grid;
@@ -1114,26 +1124,12 @@ summary:focus-visible {
   width: min(100%, 365px);
 }
 
-.scroll-story {
-  --scrub-progress: 0;
-  position: relative;
-  z-index: 2;
-  height: 240svh;
-}
-
-.scroll-story-sticky {
-  position: sticky;
-  top: 0;
-  min-height: 100svh;
-  padding-block: clamp(5.5rem, 9vw, 8rem);
-}
-
-.scroll-story-copy {
+.loop-story-copy {
   position: relative;
   z-index: 3;
 }
 
-.scroll-story-media {
+.loop-story-media {
   position: relative;
   display: grid;
   width: min(100%, 430px);
@@ -1141,8 +1137,9 @@ summary:focus-visible {
   place-items: center;
 }
 
-.scroll-phone-frame {
+.looping-phone-frame {
   --phone-tilt: -1.35deg;
+  position: relative;
   width: min(100%, 375px);
   overflow: hidden;
   box-shadow:
@@ -1151,44 +1148,29 @@ summary:focus-visible {
     inset 0 0 0 1px rgb(255 255 255 / 14%);
 }
 
-.scroll-phone-frame video {
+.looping-phone-frame video,
+.looping-video-poster {
   display: block;
   width: 100%;
   border-radius: 2.48rem;
   background: var(--night);
 }
 
-.scrub-meter {
+.looping-video-poster {
   position: absolute;
-  right: -1.5rem;
-  width: 2px;
-  height: 46%;
-  overflow: hidden;
-  border-radius: 999px;
-  background: rgb(166 214 255 / 22%);
+  inset: 0.52rem;
+  width: calc(100% - 1.04rem);
+  z-index: 0;
+  object-fit: cover;
 }
 
-.scrub-meter span {
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  background: linear-gradient(var(--coral), var(--gold));
-  transform: scaleY(var(--scrub-progress));
-  transform-origin: top;
+.looping-phone-frame video {
+  position: relative;
+  z-index: 1;
 }
 
-.scrub-note {
-  position: absolute;
-  right: -3rem;
-  bottom: 3%;
-  margin: 0;
-  color: var(--sky);
-  font-size: 0.68rem;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  opacity: calc(0.72 - var(--scrub-progress) * 0.72);
-  text-transform: uppercase;
-  writing-mode: vertical-rl;
+.loop-story.is-playing .looping-phone-frame video {
+  animation: loop-video-fade var(--video-loop-duration, 5.2s) linear infinite;
 }
 
 .real-app-note {
@@ -1749,6 +1731,18 @@ summary:focus-visible {
   }
 }
 
+@keyframes loop-video-fade {
+  0%, 3% {
+    opacity: 0;
+  }
+  8%, 92% {
+    opacity: 1;
+  }
+  97%, 100% {
+    opacity: 0;
+  }
+}
+
 @keyframes unlock-breathe {
   0%, 100% {
     transform: rotate(-2deg) scale(0.98);
@@ -1843,13 +1837,13 @@ summary:focus-visible {
   }
 
   .flower-lifecycle {
-    height: 320svh;
+    height: 280svh;
   }
 
   .flower-lifecycle-sticky {
     min-height: 100svh;
     grid-template-columns: 1fr;
-    grid-template-rows: auto minmax(330px, 1fr);
+    grid-template-rows: auto minmax(390px, 1fr);
     align-items: start;
     gap: 1rem;
     padding: 5.5rem 1.25rem 1.5rem;
@@ -1867,16 +1861,13 @@ summary:focus-visible {
   }
 
   .flower-stages {
-    display: grid;
-    max-width: none;
-    grid-template-columns: repeat(4, 1fr);
-    margin-top: 1.25rem;
+    width: min(100%, 540px);
+    grid-template-columns: repeat(3, 1fr);
+    margin-top: 0.25rem;
   }
 
   .flower-stages li {
-    display: block;
-    min-width: 0;
-    padding: 0.72rem 0.35rem 0 1rem;
+    padding: 0.72rem 0.35rem 0.62rem 1rem;
   }
 
   .flower-stages li::before {
@@ -1884,7 +1875,7 @@ summary:focus-visible {
   }
 
   .flower-stages li.is-active {
-    transform: none;
+    transform: translateY(-0.2rem);
   }
 
   .flower-stages small {
@@ -1897,10 +1888,13 @@ summary:focus-visible {
 
   .flower-artwork {
     width: min(100%, 540px);
-    height: 100%;
     min-height: 330px;
-    aspect-ratio: auto;
+    aspect-ratio: 1 / 1.02;
+  }
+
+  .flower-visual-column {
     align-self: stretch;
+    align-content: center;
   }
 
   .product-story {
@@ -1908,8 +1902,7 @@ summary:focus-visible {
   }
 
   .product-story-intro,
-  .story-row,
-  .scroll-story-sticky {
+  .story-row {
     width: calc(100% - 2.5rem);
   }
 
@@ -1923,7 +1916,6 @@ summary:focus-visible {
   }
 
   .story-row,
-  .scroll-story-sticky,
   .story-unlock {
     grid-template-columns: 1fr;
     gap: 3.5rem;
@@ -1938,27 +1930,12 @@ summary:focus-visible {
     width: min(78vw, 340px);
   }
 
-  .scroll-story {
-    height: 230svh;
-  }
-
-  .scroll-story-sticky {
-    grid-template-rows: auto minmax(0, 1fr);
-    align-content: center;
-    gap: 2rem;
-    padding-block: 5rem 2rem;
-  }
-
-  .scroll-story-media {
+  .loop-story-media {
     width: min(76vw, 330px);
   }
 
-  .scroll-phone-frame {
+  .looping-phone-frame {
     width: 100%;
-  }
-
-  .scrub-note {
-    right: -2.3rem;
   }
 
   .unlock-clock {
@@ -2049,23 +2026,15 @@ summary:focus-visible {
   }
 
   .flower-stages {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
   }
 
   .product-story .step-copy h3 {
     font-size: 3.15rem;
   }
 
-  .scroll-story-media {
+  .loop-story-media {
     width: min(74vw, 285px);
-  }
-
-  .scrub-meter {
-    right: -1rem;
-  }
-
-  .scrub-note {
-    display: none;
   }
 
   .principle-list {
@@ -2151,18 +2120,7 @@ summary:focus-visible {
     display: none;
   }
 
-  .scroll-story {
-    height: auto;
-  }
-
-  .scroll-story-sticky {
-    position: relative;
-    min-height: auto;
-    padding-block: 6rem;
-  }
-
-  .scrub-meter,
-  .scrub-note {
-    display: none;
+  .loop-story.is-playing .looping-phone-frame video {
+    animation: none;
   }
 }

@@ -5,8 +5,8 @@ import breatheVideo from '../assets/video/breathe.mp4';
 import CurvedLoop from '../components/CurvedLoop';
 import { FlowerLifecycle } from '../components/FlowerLifecycle';
 import GhostFibers from '../components/GhostFibers';
+import { LoopingVideo } from '../components/LoopingVideo';
 import { PhoneFrame } from '../components/PhoneFrame';
-import { ScrollScrubVideo } from '../components/ScrollScrubVideo';
 import { SiteChrome } from '../components/SiteChrome';
 
 export function HomePage() {
@@ -118,10 +118,10 @@ export function HomePage() {
             />
           </article>
 
-          <ScrollScrubVideo
+          <LoopingVideo
             src={breatheVideo}
             poster={breathePoster}
-            label="A real Airlock Morning Riser breathing session controlled by scrolling"
+            label="A real Airlock Morning Riser breathing session playing on a loop"
           >
             <div className="step-copy">
               <p className="step-number">02</p>
@@ -132,7 +132,7 @@ export function HomePage() {
               </p>
               <p className="real-app-note">This is a real Morning Riser session from the app.</p>
             </div>
-          </ScrollScrubVideo>
+          </LoopingVideo>
 
           <article className="story-row story-unlock">
             <div className="step-copy">

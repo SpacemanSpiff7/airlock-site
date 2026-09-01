@@ -1,12 +1,11 @@
 import { useEffect, useRef, useState, type CSSProperties } from 'react';
 import { FlowerSparks } from './FlowerSparks';
 
-type FlowerStage = 'healthy' | 'wilted' | 'tender' | 'thriving';
+type FlowerStage = 'healthy' | 'wilted' | 'thriving';
 
 const stages: Array<{ name: FlowerStage; label: string; detail: string }> = [
   { name: 'healthy', label: 'Healthy', detail: 'Colorful and upright.' },
   { name: 'wilted', label: 'Wilted', detail: 'Sustained heavy Airtime use can soften its color and posture.' },
-  { name: 'tender', label: 'Tender', detail: 'Unused Airtime that expires can help it recover.' },
   { name: 'thriving', label: 'Thriving', detail: 'Fully grown, glowing, and a little playful.' }
 ];
 
@@ -32,11 +31,11 @@ export function FlowerLifecycle() {
     };
 
     const setFlowerProgress = (progress: number) => {
-      const health = progress < 0.4
-        ? 1 - clamp((progress - 0.12) / 0.26)
-        : clamp((progress - 0.4) / 0.28);
+      const health = progress < 0.36
+        ? 1 - clamp((progress - 0.12) / 0.22)
+        : clamp((progress - 0.52) / 0.3);
       const wilt = 1 - health;
-      const glow = clamp((progress - 0.54) / 0.2);
+      const glow = clamp((progress - 0.72) / 0.18);
 
       section.style.setProperty('--flower-progress', progress.toFixed(3));
       section.style.setProperty('--flower-health', health.toFixed(3));
@@ -45,11 +44,9 @@ export function FlowerLifecycle() {
 
       const nextStage: FlowerStage = progress < 0.2
         ? 'healthy'
-        : progress < 0.45
+        : progress < 0.7
           ? 'wilted'
-          : progress < 0.72
-            ? 'tender'
-            : 'thriving';
+          : 'thriving';
 
       setStage(currentStage => (currentStage === nextStage ? currentStage : nextStage));
     };
@@ -121,6 +118,38 @@ export function FlowerLifecycle() {
             Breathing helps today’s flower grow. Its health reflects the Airtime you use and the Airtime that expires
             unused. At the end of the day, that flower joins your history.
           </p>
+        </div>
+
+        <div className="flower-visual-column">
+          <div
+            className="flower-artwork"
+            role="img"
+            aria-label="One possible set of flower states: healthy, wilted, and thriving"
+          >
+            <FlowerSparks active={stage === 'thriving'} />
+            <div className="flower-aura" aria-hidden="true" />
+            <div className="flower-ground" aria-hidden="true" />
+            <div className="flower-plant" aria-hidden="true">
+              <span className="flower-stem" />
+              <span className="flower-leaf flower-leaf-left" />
+              <span className="flower-leaf flower-leaf-right" />
+              <div className="flower-head">
+                {petalColors.map((color, index) => (
+                  <span
+                    key={`${color}-${index}`}
+                    className="flower-petal"
+                    style={{
+                      '--petal-angle': `${index * 60}deg`,
+                      '--petal-color': color
+                    } as CSSProperties}
+                  />
+                ))}
+                <span className="flower-center" />
+                <span className="flower-center-dot" />
+              </div>
+            </div>
+          </div>
+
           <ol className="flower-stages" aria-label="Flower lifecycle">
             {stages.map(item => (
               <li key={item.name} className={stage === item.name ? 'is-active' : ''}>
@@ -129,36 +158,6 @@ export function FlowerLifecycle() {
               </li>
             ))}
           </ol>
-        </div>
-
-        <div
-          className="flower-artwork"
-          role="img"
-          aria-label="One possible set of flower states: healthy, wilted, tender, and thriving"
-        >
-          <FlowerSparks active={stage === 'thriving'} />
-          <div className="flower-aura" aria-hidden="true" />
-          <div className="flower-ground" aria-hidden="true" />
-          <div className="flower-plant" aria-hidden="true">
-            <span className="flower-stem" />
-            <span className="flower-leaf flower-leaf-left" />
-            <span className="flower-leaf flower-leaf-right" />
-            <div className="flower-head">
-              {petalColors.map((color, index) => (
-                <span
-                  key={`${color}-${index}`}
-                  className="flower-petal"
-                  style={{
-                    '--petal-angle': `${index * 60}deg`,
-                    '--petal-color': color
-                  } as CSSProperties}
-                />
-              ))}
-              <span className="flower-center" />
-              <span className="flower-center-dot" />
-            </div>
-          </div>
-          <p className="flower-scroll-note" aria-hidden="true">Next state</p>
         </div>
       </div>
     </section>
