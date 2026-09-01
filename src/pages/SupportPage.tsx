@@ -41,7 +41,7 @@ export function SupportPage() {
           </details>
 
           <details>
-            <summary>An app did not block or reopen correctly.</summary>
+            <summary>An app did not block or unlock correctly.</summary>
             <p>
               Check that Screen Time and Notifications are allowed for Airlock, then restart the app. If the problem
               continues, email us with your iPhone model and iOS version.

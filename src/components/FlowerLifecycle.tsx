@@ -1,13 +1,13 @@
 import { useEffect, useRef, useState, type CSSProperties } from 'react';
 import { FlowerSparks } from './FlowerSparks';
 
-type FlowerStage = 'healthy' | 'wilted' | 'restored' | 'thriving';
+type FlowerStage = 'healthy' | 'wilted' | 'tender' | 'thriving';
 
 const stages: Array<{ name: FlowerStage; label: string; detail: string }> = [
-  { name: 'healthy', label: 'Healthy', detail: 'Open and steady.' },
-  { name: 'wilted', label: 'Wilted', detail: 'Color softens. The stem folds.' },
-  { name: 'restored', label: 'Restored', detail: 'Color and lift return.' },
-  { name: 'thriving', label: 'Thriving', detail: 'Full health, glow, and a little celebration.' }
+  { name: 'healthy', label: 'Healthy', detail: 'Colorful and upright.' },
+  { name: 'wilted', label: 'Wilted', detail: 'Sustained heavy Airtime use can soften its color and posture.' },
+  { name: 'tender', label: 'Tender', detail: 'Unused Airtime that expires can help it recover.' },
+  { name: 'thriving', label: 'Thriving', detail: 'Fully grown, glowing, and a little playful.' }
 ];
 
 const petalColors = ['#f08b83', '#c675ae', '#735ac7', '#a6d6ff', '#f4b860', '#f08b83'];
@@ -48,7 +48,7 @@ export function FlowerLifecycle() {
         : progress < 0.45
           ? 'wilted'
           : progress < 0.72
-            ? 'restored'
+            ? 'tender'
             : 'thriving';
 
       setStage(currentStage => (currentStage === nextStage ? currentStage : nextStage));
@@ -115,10 +115,11 @@ export function FlowerLifecycle() {
     >
       <div className="flower-lifecycle-sticky">
         <div className="flower-lifecycle-copy">
-          <p className="section-number">Scroll to grow</p>
-          <h2 id="flower-lifecycle-title">Watch the flower come back.</h2>
+          <p className="section-number">The daily flower · scroll through an example</p>
+          <h2 id="flower-lifecycle-title">The flower can change as the day goes.</h2>
           <p className="flower-lifecycle-lede">
-            The daily flower changes with breathing practice and Airtime use.
+            Breathing helps today’s flower grow. Its health reflects the Airtime you use and the Airtime that expires
+            unused. At the end of the day, that flower joins your history.
           </p>
           <ol className="flower-stages" aria-label="Flower lifecycle">
             {stages.map(item => (
@@ -133,7 +134,7 @@ export function FlowerLifecycle() {
         <div
           className="flower-artwork"
           role="img"
-          aria-label="A flower changes from healthy to wilted, then returns to full health as the page scrolls"
+          aria-label="One possible set of flower states: healthy, wilted, tender, and thriving"
         >
           <FlowerSparks active={stage === 'thriving'} />
           <div className="flower-aura" aria-hidden="true" />
@@ -157,7 +158,7 @@ export function FlowerLifecycle() {
               <span className="flower-center-dot" />
             </div>
           </div>
-          <p className="flower-scroll-note" aria-hidden="true">Keep scrolling</p>
+          <p className="flower-scroll-note" aria-hidden="true">Next state</p>
         </div>
       </div>
     </section>
