@@ -2,6 +2,7 @@ import appIcon from '../assets/app-icon.png';
 import breatheScreen from '../assets/screens/breathe.png';
 import dayScreen from '../assets/screens/day.png';
 import greenhouseScreen from '../assets/screens/greenhouse.png';
+import CurvedLoop from '../components/CurvedLoop';
 import GhostFibers from '../components/GhostFibers';
 import { PhoneFrame } from '../components/PhoneFrame';
 import { SiteChrome } from '../components/SiteChrome';
@@ -57,6 +58,16 @@ export function HomePage() {
             a small ritual<br />before the feed
           </p>
         </section>
+
+        <div className="flow-bridge">
+          <CurvedLoop
+            marqueeText="inhale  ·  make space  ·  exhale  ·  choose  ·  "
+            speed={0.22}
+            curveAmount={74}
+            direction="right"
+            className="flow-bridge-text"
+          />
+        </div>
 
         <section className="ritual" id="how-it-works" aria-labelledby="ritual-title">
           <div className="ritual-intro">

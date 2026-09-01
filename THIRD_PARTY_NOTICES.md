@@ -1,8 +1,8 @@
 # Third-party notices
 
-## React Bits — Ghost Fibers
+## React Bits — Ghost Fibers and Curved Loop
 
-The Ghost Fibers component is adapted from [React Bits](https://reactbits.dev/backgrounds/ghost-fibers),
+The Ghost Fibers and Curved Loop components are adapted from [React Bits](https://reactbits.dev),
 copyright © 2026 David Haz. React Bits is licensed under the MIT License with the Commons Clause.
 The component is used as part of this website and is not offered for sale or redistributed as a component library.
 
