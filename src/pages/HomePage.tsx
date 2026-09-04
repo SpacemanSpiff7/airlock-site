@@ -1,4 +1,4 @@
-import appIcon from '../assets/app-icon.png';
+import dayScreen from '../assets/flower-screen-healthy.webp';
 import breathePoster from '../assets/screens/breathe-active.png';
 import greenhouseScreen from '../assets/screens/greenhouse.png';
 import breatheVideo from '../assets/video/breathe.mp4';
@@ -39,24 +39,22 @@ export function HomePage() {
             dpr={1}
             fps={30}
           />
-          <div className="hero-orbit orbit-one" aria-hidden="true" />
-          <div className="hero-orbit orbit-two" aria-hidden="true" />
           <div className="hero-copy">
-            <p className="eyebrow">iPhone · Coming soon</p>
-            <h1 id="hero-title">Airlock</h1>
-            <p className="hero-line">Breathe before you scroll.</p>
+            <p className="eyebrow"><span className="availability-dot" aria-hidden="true" /> A little space between you and your apps</p>
+            <h1 id="hero-title">Breathe before<br />you <em>scroll.</em></h1>
             <p className="hero-explainer">
-              Airlock blocks the apps and websites you choose. Finish a guided breathing session to earn Airtime,
-              then use it to unlock them for a few minutes.
+              Airlock blocks the apps you choose. Breathe to earn Airtime,
+              then use it to open them for a little while.
             </p>
-            <a className="text-link" href="#how-it-works">
-              See the basic loop <span aria-hidden="true">↓</span>
+            <a className="primary-link" href="#how-it-works">
+              Meet Airlock <span aria-hidden="true">↓</span>
             </a>
+            <p className="availability">Coming soon for iPhone · iOS 26 or later</p>
           </div>
-          <div className="hero-emblem" aria-label="Airlock app icon">
-            <div className="emblem-shadow" aria-hidden="true" />
-            <img src={appIcon} alt="Airlock’s flower app icon" />
-          </div>
+          <figure className="hero-product">
+            <PhoneFrame src={dayScreen} alt="Airlock’s Day screen, with a colorful flower growing against an evening landscape" />
+            <figcaption>Your daily practice, taking shape.</figcaption>
+          </figure>
         </section>
 
         <div className="flow-bridge">
@@ -99,7 +97,7 @@ export function HomePage() {
           />
           <div className="product-story-intro">
             <p className="section-number">The basic loop · 01 — 03</p>
-            <h2 id="product-story-title">Here’s what happens in Airlock.</h2>
+            <h2 id="product-story-title">A pause.<br />Then a choice.</h2>
             <p>Choose what gets blocked. Breathe when you want Airtime. Use that Airtime for a short unlock.</p>
           </div>
 
