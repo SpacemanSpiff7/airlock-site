@@ -11,7 +11,7 @@ export function PrivacyPage() {
             Airlock keeps its app data on your iPhone. We cannot see your breathing activity, Airtime, or Screen
             Time choices.
           </p>
-          <p className="updated">Last updated August 31, 2026</p>
+          <p className="updated">Last updated: 2026-09-03</p>
         </header>
 
         <article className="document-body">
@@ -31,11 +31,11 @@ export function PrivacyPage() {
                 The apps and websites you choose to block. Airlock uses Apple’s Screen Time selections but does not
                 receive your browsing history or the contents of other apps.
               </li>
-              <li>Airtime earned and used, breathing history, daily flowers, and morning protection.</li>
+              <li>Airtime earned and used, breathing history, daily flowers, and Morning Lock.</li>
               <li>Your Airlock settings.</li>
               <li>
-                If you set a commitment PIN, Airlock stores a secure record used to verify it in the iOS Keychain—not
-                the PIN itself.
+                If you turn on PIN Protection, Airlock stores a secure PIN record used to verify it in the iOS
+                Keychain—not the PIN itself.
               </li>
             </ul>
           </section>
@@ -74,7 +74,7 @@ export function PrivacyPage() {
             <h2>Retention and deletion</h2>
             <p>
               Your Airlock data stays on your iPhone while the app is installed. Deleting Airlock removes the data
-              stored with the app. If you set a commitment PIN, its secure verification record may remain in the iOS
+              stored with the app. If you turn on PIN Protection, its secure verification record may remain in the iOS
               Keychain after a reinstall. You can remove it using Airlock’s PIN reset before deleting the app.
             </p>
             <p>
@@ -93,7 +93,7 @@ export function PrivacyPage() {
           <section>
             <h2>Contact</h2>
             <p>
-              Questions about privacy? Email <a href="mailto:contact@curlbro.com">contact@curlbro.com</a>.
+              For privacy questions, contact <a href="mailto:contact@curlbro.com">contact@curlbro.com</a>.
             </p>
           </section>
         </article>
