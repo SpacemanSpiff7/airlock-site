@@ -8,8 +8,8 @@ export function SupportPage() {
           <p className="eyebrow">Support</p>
           <h1>Tell us what happened.</h1>
           <p>Include your iOS version, Airlock version, and the steps that led to the problem.</p>
-          <a className="email-link" href="mailto:contact@curlbro.com?subject=Airlock%20support">
-            contact@curlbro.com <span aria-hidden="true">↗</span>
+          <a className="email-link" href="mailto:contact@airlockapp.org?subject=Airlock%20support">
+            contact@airlockapp.org <span aria-hidden="true">↗</span>
           </a>
         </header>
 

@@ -11,7 +11,7 @@ export function PrivacyPage() {
             Airlock keeps its app data on your iPhone. We cannot see your breathing activity, Airtime, or Screen
             Time choices.
           </p>
-          <p className="updated">Last updated: 2026-09-03</p>
+          <p className="updated">Last updated: 2026-09-06</p>
         </header>
 
         <article className="document-body">
@@ -38,6 +38,16 @@ export function PrivacyPage() {
                 Keychain—not the PIN itself.
               </li>
             </ul>
+          </section>
+
+          <section>
+            <h2>Optional developer tips</h2>
+            <p>
+              Apple processes optional tips through the App Store. Airlock does not receive your payment card
+              details. Airlock checks Apple’s purchase confirmation and remembers on your device that you tipped
+              so it can show a thank-you. It may recover that acknowledgement from your App Store purchase history
+              after a reinstall. Tips do not change access to any app feature or grant Airtime.
+            </p>
           </section>
 
           <section>
@@ -76,6 +86,7 @@ export function PrivacyPage() {
               Your Airlock data stays on your iPhone while the app is installed. Deleting Airlock removes the data
               stored with the app. If you turn on PIN Protection, its secure verification record may remain in the iOS
               Keychain after a reinstall. You can remove it using Airlock’s PIN reset before deleting the app.
+              Deleting Airlock does not delete purchase records held by Apple.
             </p>
             <p>
               Airlock does not keep a copy of your data, so we cannot view or delete it for you.
@@ -93,7 +104,7 @@ export function PrivacyPage() {
           <section>
             <h2>Contact</h2>
             <p>
-              For privacy questions, contact <a href="mailto:contact@curlbro.com">contact@curlbro.com</a>.
+              For privacy questions, contact <a href="mailto:contact@airlockapp.org">contact@airlockapp.org</a>.
             </p>
           </section>
         </article>
