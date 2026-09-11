@@ -46,10 +46,23 @@ export function HomePage() {
               Airlock blocks the apps you choose. Breathe to earn Airtime,
               then use it to open them for a little while.
             </p>
-            <a className="primary-link" href="#how-it-works">
-              Meet Airlock <span aria-hidden="true">↓</span>
-            </a>
-            <p className="availability">Coming soon for iPhone · iOS 26 or later</p>
+            <div className="hero-actions">
+              <a
+                className="primary-link"
+                href="https://testflight.apple.com/join/B6S5vU5q"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Join the free beta <span aria-hidden="true">↗</span>
+              </a>
+              <a className="secondary-link" href="#how-it-works">
+                Meet Airlock <span aria-hidden="true">↓</span>
+              </a>
+            </div>
+            <p className="availability">
+              Always free, with no subscription. Requires an iPhone running iOS 26 or later and Apple&apos;s TestFlight
+              app.
+            </p>
           </div>
           <figure className="hero-product">
             <PhoneFrame src={dayScreen} alt="Airlock’s Day screen, with a colorful flower growing against an evening landscape" />

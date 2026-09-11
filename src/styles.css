@@ -1890,9 +1890,11 @@ summary:focus-visible {
 .hero h1 { margin: 2rem 0 1.5rem; font-family: 'Familjen Grotesk', sans-serif; font-size: clamp(4rem, 7.3vw, 7rem); font-weight: 700; line-height: .99; letter-spacing: -.055em; }
 .hero h1 em { color: var(--coral); font-style: normal; }
 .hero-explainer { max-width: 29rem; margin: 0 0 2rem; color: var(--sky); font-size: 1.125rem; line-height: 1.75; }
+.hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: .75rem 1.5rem; }
 .primary-link { display: inline-flex; align-items: center; justify-content: space-between; gap: 3rem; padding: 1.1rem 1.5rem; border-radius: 999px; color: var(--night); background: var(--coral); font-weight: 700; text-decoration: none; transition: background .2s; }
 .primary-link:hover { background: var(--paper); }
-.availability { margin: 1.25rem 0 0; font-size: .875rem; color: var(--sky); }
+.secondary-link { display: inline-flex; align-items: center; gap: .65rem; min-height: 44px; color: var(--paper); font-weight: 700; text-underline-offset: .35rem; }
+.availability { max-width: 34rem; margin: 1.25rem 0 0; font-size: .875rem; line-height: 1.55; color: var(--sky); }
 .hero-product { width: 100%; max-width: 295px; margin: 0; justify-self: center; }
 .hero-product figcaption { margin-top: 1.5rem; text-align: center; color: var(--sky); font-size: .875rem; line-height: 1.6; }
 .hero-product .phone-frame { position: relative; width: min(100%, 300px); justify-self: center; padding: .4rem; border: 1px solid rgb(166 214 255 / 35%); border-radius: 2.4rem; background: var(--night); box-shadow: 0 2rem 4rem rgb(0 0 0 / 18%); }
