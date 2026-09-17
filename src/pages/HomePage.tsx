@@ -49,19 +49,18 @@ export function HomePage() {
             <div className="hero-actions">
               <a
                 className="primary-link"
-                href="https://testflight.apple.com/join/B6S5vU5q"
+                href="https://apps.apple.com/app/apple-store/id6808816509?pt=128785261&ct=website&mt=8"
                 target="_blank"
                 rel="noreferrer"
               >
-                Join the free beta <span aria-hidden="true">↗</span>
+                Download Airlock free <span aria-hidden="true">↗</span>
               </a>
               <a className="secondary-link" href="#how-it-works">
                 Meet Airlock <span aria-hidden="true">↓</span>
               </a>
             </div>
             <p className="availability">
-              Always free, with no subscription. Requires an iPhone running iOS 26 or later and Apple&apos;s TestFlight
-              app.
+              All features are free, with optional tips and no subscription. Requires an iPhone running iOS 26 or later.
             </p>
           </div>
           <figure className="hero-product">
