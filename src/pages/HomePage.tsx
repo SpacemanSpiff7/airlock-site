@@ -8,8 +8,11 @@ import GhostFibers from '../components/GhostFibers';
 import { LoopingVideo } from '../components/LoopingVideo';
 import { PhoneFrame } from '../components/PhoneFrame';
 import { SiteChrome } from '../components/SiteChrome';
+import { appStoreUrlForSource } from '../attribution';
 
 export function HomePage() {
+  const appStoreUrl = appStoreUrlForSource(new URLSearchParams(window.location.search).get('utm_source'));
+
   return (
     <SiteChrome current="home">
       <main id="main">
@@ -49,7 +52,7 @@ export function HomePage() {
             <div className="hero-actions">
               <a
                 className="primary-link"
-                href="https://apps.apple.com/app/apple-store/id6808816509?pt=128785261&ct=website&mt=8"
+                href={appStoreUrl}
                 target="_blank"
                 rel="noreferrer"
               >
