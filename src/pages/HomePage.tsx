@@ -172,9 +172,10 @@ export function HomePage() {
 
         <section className="principles" aria-labelledby="principles-title">
           <p className="section-number">Private by design</p>
-          <h2 id="principles-title">Your Airlock activity stays on your iPhone.</h2>
+          <h2 id="principles-title">Your breathing and blocking records stay on your iPhone.</h2>
           <p className="principles-lede">
-            There’s no Airlock account, and we don’t collect or track how you use the app.
+            There’s no Airlock account or third-party analytics. Apple's optional usage and crash reports help us
+            improve Airlock; you control sharing in iOS Settings.
           </p>
           <div className="principle-list">
             <p>No account</p>

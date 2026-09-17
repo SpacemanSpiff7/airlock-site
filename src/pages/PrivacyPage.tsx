@@ -8,18 +8,18 @@ export function PrivacyPage() {
           <p className="eyebrow">Airlock privacy</p>
           <h1>Privacy</h1>
           <p className="document-lede">
-            Airlock keeps its app data on your iPhone. We cannot see your breathing activity, Airtime, or Screen
-            Time choices.
+            Airlock keeps its breathing and blocking records on your iPhone. We cannot see your breathing history,
+            Airtime, or Screen Time choices.
           </p>
-          <p className="updated">Last updated: 2026-09-06</p>
+          <p className="updated">Last updated: 2026-09-17</p>
         </header>
 
         <article className="document-body">
           <section>
             <h2>The short version</h2>
             <p>
-              Airlock does not collect personal data, track how you use the app, or show ads. There is no Airlock
-              account.
+              Airlock has no account, ads, or third-party analytics. Apple may share optional usage statistics and crash
+              information with us through its developer tools, as described below.
             </p>
           </section>
 
@@ -32,6 +32,7 @@ export function PrivacyPage() {
                 receive your browsing history or the contents of other apps.
               </li>
               <li>Airtime earned and used, breathing history, daily flowers, and Morning Lock.</li>
+              <li>Unlock sessions and your one-minute wrap-up allowance.</li>
               <li>Your Airlock settings.</li>
               <li>
                 If you turn on PIN Protection, Airlock stores a secure PIN record used to verify it in the iOS
@@ -74,9 +75,32 @@ export function PrivacyPage() {
           </section>
 
           <section>
+            <h2>Optional Apple analytics and diagnostics</h2>
+            <p>
+              If you choose to share app analytics with developers in iOS, Apple may provide us with usage statistics
+              and crash information that are aggregated or do not personally identify you. We use Apple's reports
+              to understand overall app use and improve reliability. Examples include app sessions, active devices,
+              retention, and crashes.
+            </p>
+            <p>
+              Airlock does not send custom feature-use events or upload your breathing history, Airtime, or Screen
+              Time selections for these reports. There is no third-party analytics service or advertising tracking
+              in Airlock.
+            </p>
+            <p>
+              You control Apple's sharing in <strong>Settings → Privacy &amp; Security → Analytics &amp; Improvements
+              → Share With App Developers</strong>. Airlock cannot change that choice. All Airlock features remain
+              available whether you share or not. Apple handles this information under its{' '}
+              <a href="https://www.apple.com/legal/privacy/data/en/app-analytics/">App Analytics &amp; Privacy notice</a>.
+            </p>
+          </section>
+
+          <section>
             <h2>Sharing</h2>
             <p>
-              Airlock does not send your app activity to us or third parties. It contains no ads or tracking tools.
+              Airlock does not upload your breathing and blocking records to us or third parties. Apple's optional
+              reporting is separate from those local records. Airlock contains no ads or tools that track you
+              across other companies' apps and websites.
             </p>
           </section>
 
@@ -89,7 +113,8 @@ export function PrivacyPage() {
               Deleting Airlock does not delete purchase records held by Apple.
             </p>
             <p>
-              Airlock does not keep a copy of your data, so we cannot view or delete it for you.
+              We do not keep a copy of your local Airlock records, so we cannot view or delete them for you. Apple
+              manages information collected through its services under its own privacy policies.
             </p>
           </section>
 
