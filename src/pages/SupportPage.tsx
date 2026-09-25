@@ -29,7 +29,8 @@ export function SupportPage() {
             <summary>Does Airlock watch or record me breathing?</summary>
             <p>
               No. Airlock guides the timing but does not watch or record you. It does not use your camera,
-              microphone, motion sensors, or HealthKit.
+              microphone, or HealthKit. It reads device tilt only to animate the flower on your iPhone; tilt is
+              never used to verify breathing, stored, or sent anywhere.
             </p>
           </details>
 

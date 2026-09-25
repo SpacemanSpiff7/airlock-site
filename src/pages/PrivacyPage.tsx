@@ -11,7 +11,7 @@ export function PrivacyPage() {
             Airlock keeps its breathing and blocking records on your iPhone. We cannot see your breathing history,
             Airtime, or Screen Time choices.
           </p>
-          <p className="updated">Last updated: 2026-09-17</p>
+          <p className="updated">Last updated: 2026-09-25</p>
         </header>
 
         <article className="document-body">
@@ -68,8 +68,9 @@ export function PrivacyPage() {
             <h2>Sensors, biometrics, and health data</h2>
             <p>
               Airlock guides breathing timing but does not watch or record you. It does not use the camera,
-              microphone, motion sensors, or HealthKit. If Airlock asks for Face ID or Touch ID to confirm a change,
-              iOS performs the check and tells Airlock only whether it succeeded.
+              microphone, or HealthKit. Airlock reads device tilt on your iPhone only to animate the flower; tilt is
+              never used to verify breathing, stored, or sent anywhere. If Airlock asks for Face ID or Touch ID to
+              confirm a change, iOS performs the check and tells Airlock only whether it succeeded.
             </p>
             <p>Airlock is not a medical device, diagnosis tool, or treatment.</p>
           </section>
