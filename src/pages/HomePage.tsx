@@ -46,8 +46,8 @@ export function HomePage() {
             <p className="eyebrow"><span className="availability-dot" aria-hidden="true" /> A little space between you and your apps</p>
             <h1 id="hero-title">Breathe before<br />you <em>scroll.</em></h1>
             <p className="hero-explainer">
-              Airlock blocks the apps you choose. Breathe to earn Airtime,
-              then use it to open them for a little while.
+              Use Airlock for guided breathing on its own. App Blocking is optional: choose what to block,
+              breathe to earn Airtime, then choose an unlock time and tap Unlock.
             </p>
             <div className="hero-actions">
               <a
@@ -113,7 +113,7 @@ export function HomePage() {
           <div className="product-story-intro">
             <p className="section-number">The basic loop · 01 — 03</p>
             <h2 id="product-story-title">A pause.<br />Then a choice.</h2>
-            <p>Choose what gets blocked. Breathe when you want Airtime. Use that Airtime for a short unlock.</p>
+            <p>With App Blocking, choose what gets blocked, breathe to earn Airtime, then choose a time and tap Unlock.</p>
           </div>
 
           <article className="story-row story-protection">

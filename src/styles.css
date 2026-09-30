@@ -142,6 +142,7 @@ summary:focus-visible {
 }
 
 .wordmark img {
+  flex-shrink: 0;
   width: 2.35rem;
   height: 2.35rem;
   border-radius: 25%;
@@ -1524,6 +1525,9 @@ summary:focus-visible {
 @media (max-width: 820px) {
   .site-header {
     width: calc(100% - 2rem);
+    flex-wrap: wrap;
+    gap: 0.35rem 1rem;
+    padding-block: 0.5rem;
   }
 
   .hero {
@@ -1874,7 +1878,7 @@ summary:focus-visible {
 .hero {
   position: relative;
   display: grid;
-  grid-template-columns: 1.3fr 0.7fr;
+  grid-template-columns: minmax(0, 1.3fr) minmax(0, 0.7fr);
   align-items: center;
   gap: 5rem;
   min-height: 850px;
@@ -1891,7 +1895,7 @@ summary:focus-visible {
 .hero h1 em { color: var(--coral); font-style: normal; }
 .hero-explainer { max-width: 29rem; margin: 0 0 2rem; color: var(--sky); font-size: 1.125rem; line-height: 1.75; }
 .hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: .75rem 1.5rem; }
-.primary-link { display: inline-flex; align-items: center; justify-content: space-between; gap: 3rem; padding: 1.1rem 1.5rem; border-radius: 999px; color: var(--night); background: var(--coral); font-weight: 700; text-decoration: none; transition: background .2s; }
+.primary-link { display: inline-flex; align-items: center; justify-content: space-between; max-width: 100%; gap: min(3rem, 8vw); padding: 1.1rem min(1.5rem, 4vw); border-radius: 999px; color: var(--night); background: var(--coral); font-weight: 700; text-decoration: none; transition: background .2s; }
 .primary-link:hover { background: var(--paper); }
 .secondary-link { display: inline-flex; align-items: center; gap: .65rem; min-height: 44px; color: var(--paper); font-weight: 700; text-underline-offset: .35rem; }
 .availability { max-width: 34rem; margin: 1.25rem 0 0; font-size: .875rem; line-height: 1.55; color: var(--sky); }
@@ -1906,8 +1910,9 @@ summary:focus-visible {
 .product-story-intro h2 { font-size: clamp(3.5rem, 6vw, 6rem); }
 .site-header nav a, .footer-links a { display: inline-flex; align-items: center; min-height: 44px; }
 @media (max-width: 820px) {
-  .hero { grid-template-columns: 1fr; grid-template-rows: auto auto; gap: 3rem; min-height: auto; padding: 8rem 1.5rem 4rem; }
-  .hero h1 { font-size: clamp(3.5rem, 10vw, 6rem); }
+  .hero { grid-template-columns: minmax(0, 1fr); grid-template-rows: auto auto; gap: 3rem; min-height: auto; padding: 8rem 1.5rem 4rem; }
+  .hero h1 { font-size: min(clamp(3.5rem, 10vw, 6rem), 20vw); }
+  .product-story-intro h2 { font-size: min(clamp(3.5rem, 6vw, 6rem), 20vw); }
   .hero-explainer { font-size: 1rem; }
   .hero-product { max-width: 260px; }
 }
