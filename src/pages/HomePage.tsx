@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import dayScreen from '../assets/flower-screen-healthy.webp';
 import breathePoster from '../assets/screens/breathe-active.png';
 import greenhouseScreen from '../assets/screens/greenhouse.png';
@@ -11,7 +12,13 @@ import { SiteChrome } from '../components/SiteChrome';
 import { appStoreUrlForSource } from '../attribution';
 
 export function HomePage() {
-  const appStoreUrl = appStoreUrlForSource(new URLSearchParams(window.location.search).get('utm_source'));
+  const [source, setSource] = useState<string | null>(null);
+
+  useEffect(() => {
+    setSource(new URLSearchParams(window.location.search).get('utm_source'));
+  }, []);
+
+  const appStoreUrl = appStoreUrlForSource(source);
 
   return (
     <SiteChrome current="home">

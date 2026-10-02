@@ -5,9 +5,10 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "tsc -b && vite build --configLoader runner && node scripts/prerender.mjs",
     "preview": "vite preview",
-    "check": "tsc -b"
+    "check": "tsc -b",
+    "test": "node --test tests/seo.test.mjs"
   },
   "dependencies": {
     "ogl": "^1.0.11",

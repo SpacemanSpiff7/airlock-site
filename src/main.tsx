@@ -1,10 +1,5 @@
-import { StrictMode } from 'react';
-import { createRoot } from 'react-dom/client';
 import { HomePage } from './pages/HomePage';
+import { mountPage } from './mountPage';
 import './styles.css';
 
-createRoot(document.getElementById('root')!).render(
-  <StrictMode>
-    <HomePage />
-  </StrictMode>
-);
+mountPage(<HomePage />);
