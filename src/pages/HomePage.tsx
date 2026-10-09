@@ -141,7 +141,7 @@ export function HomePage() {
           <LoopingVideo
             src={breatheVideo}
             poster={breathePoster}
-            label="A real Airlock Morning Riser breathing session playing on a loop"
+            label="Airlock breathing session recorded in an earlier app version, playing on a loop"
           >
             <div className="step-copy">
               <p className="step-number">02</p>
@@ -150,7 +150,7 @@ export function HomePage() {
                 Finish a guided session to add Airtime. You can change the session length, breathing exercise, pace,
                 and haptics.
               </p>
-              <p className="real-app-note">This is a real Morning Riser session from the app.</p>
+              <p className="real-app-note">Recorded in an earlier version of Airlock.</p>
             </div>
           </LoopingVideo>
 
