@@ -12,7 +12,8 @@ export default defineConfig({
       input: {
         home: fileURLToPath(new URL('./index.html', import.meta.url)),
         privacy: fileURLToPath(new URL('./privacy/index.html', import.meta.url)),
-        support: fileURLToPath(new URL('./support/index.html', import.meta.url))
+        support: fileURLToPath(new URL('./support/index.html', import.meta.url)),
+        study: fileURLToPath(new URL('./study/index.html', import.meta.url))
       }
     }
   }

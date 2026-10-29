@@ -1,7 +1,7 @@
 import { readFile, writeFile } from 'node:fs/promises';
 import { createServer } from 'vite';
 
-const pages = [['/', 'index.html'], ['/privacy/', 'privacy/index.html'], ['/support/', 'support/index.html']];
+const pages = [['/', 'index.html'], ['/privacy/', 'privacy/index.html'], ['/support/', 'support/index.html'], ['/study/', 'study/index.html']];
 const manifest = JSON.parse(await readFile('dist/.vite/manifest.json', 'utf8'));
 const assets = new Map(Object.entries(manifest).map(([source, entry]) => [`/${source}`, `/${entry.file}`]));
 const server = await createServer({ configLoader: 'runner', server: { middlewareMode: true, ws: false }, appType: 'custom' });

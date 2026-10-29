@@ -8,7 +8,8 @@ const origin = 'https://airlockapp.org';
 const pages = [
   ['/', 'index.html', ['Breathe before', 'App Blocking is optional:', 'The flower can change as the day goes.', 'Unlock for a few minutes.', 'Your breathing and blocking records stay on your iPhone.']],
   ['/privacy/', 'privacy/index.html', ['Data stored on your device', 'Optional developer tips', 'Optional Apple analytics and diagnostics', 'Retention and deletion', 'contact@airlockapp.org']],
-  ['/support/', 'support/index.html', ['Tell us what happened.', 'Why does Airlock need Screen Time permission?', 'Where is my data?', 'How do I report a bug?', 'contact@airlockapp.org']]
+  ['/support/', 'support/index.html', ['Tell us what happened.', 'Why does Airlock need Screen Time permission?', 'Where is my data?', 'How do I report a bug?', 'contact@airlockapp.org']],
+  ['/study/', 'study/index.html', ['Name one concrete task.', 'Your next block', 'Return at', 'Next action', 'iOS 26 or later', 'no subscription', 'not endorsements of Airlock']]
 ];
 const server = await createServer({ configLoader: 'runner', server: { middlewareMode: true, ws: false }, appType: 'custom' });
 after(() => server.close());
@@ -62,7 +63,7 @@ for (const [route, file, content] of pages) {
   });
 }
 
-test('robots permits crawling and sitemap contains exactly the three canonical pages', async () => {
+test('robots permits crawling and sitemap contains exactly the canonical pages', async () => {
   const robots = await readFile('dist/robots.txt', 'utf8');
   assert.match(robots, /User-agent: \*\s+Allow: \/\s+Sitemap: https:\/\/airlockapp\.org\/sitemap\.xml/);
   assert.ok(!robots.includes('Disallow:'));

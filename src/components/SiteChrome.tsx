@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react';
 import appIcon from '../assets/app-icon.png';
 
-type PageName = 'home' | 'privacy' | 'support';
+type PageName = 'home' | 'privacy' | 'support' | 'study';
 
 interface SiteChromeProps {
   current: PageName;
@@ -12,7 +12,8 @@ interface SiteChromeProps {
 const routes = {
   home: { fromHome: './', fromInside: '../' },
   privacy: { fromHome: './privacy/', fromInside: '../privacy/' },
-  support: { fromHome: './support/', fromInside: '../support/' }
+  support: { fromHome: './support/', fromInside: '../support/' },
+  study: { fromHome: './study/', fromInside: '../study/' }
 };
 
 export function SiteChrome({ current, children, tone = 'night' }: SiteChromeProps) {
@@ -42,6 +43,7 @@ export function SiteChrome({ current, children, tone = 'night' }: SiteChromeProp
       <footer className="site-footer">
         <p className="copyright">© 2026 Airlock.</p>
         <div className="footer-links">
+          <a href={link('study')} aria-current={current === 'study' ? 'page' : undefined}>Study guide</a>
           <a href={link('privacy')}>Privacy</a>
           <a href={link('support')}>Support</a>
         </div>

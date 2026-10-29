@@ -1199,9 +1199,92 @@ summary:focus-visible {
 
 .footer-links {
   display: flex;
+  flex-wrap: wrap;
   gap: 1.5rem;
   font-size: 0.85rem;
   font-weight: 700;
+}
+
+.study-main {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 10rem 2rem 6rem;
+  color: var(--ink);
+}
+
+.study-heading { max-width: 760px; margin-bottom: 4rem; }
+.study-heading h1 {
+  margin: 1.5rem 0;
+  font-family: 'Familjen Grotesk', 'Plus Jakarta Sans', sans-serif;
+  font-size: clamp(3.5rem, 9vw, 7.5rem);
+  line-height: .95;
+  letter-spacing: -.05em;
+}
+.study-lede { max-width: 37rem; font-size: 1.2rem; line-height: 1.65; }
+.study-print {
+  min-height: 44px;
+  margin-top: 1rem;
+  padding: .7rem 1rem;
+  color: var(--ink);
+  background: transparent;
+  border: 1.5px solid currentColor;
+  border-radius: 999px;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+.study-print:hover { background: var(--sky); }
+.study-print:active { background: var(--coral); }
+.tone-paper :is(a, button):focus-visible { outline: 3px solid var(--ink); outline-offset: 5px; }
+.study-steps { max-width: 800px; margin: 0 0 4rem; padding: 0; list-style: none; counter-reset: study-step; }
+.study-steps li { counter-increment: study-step; position: relative; padding: 2rem 0 2rem 3.5rem; border-top: 1px solid var(--ink); }
+.study-steps li::before { content: "0" counter(study-step); position: absolute; top: 2.15rem; left: 0; font-weight: 700; }
+.study-main h2 { margin: 0 0 .8rem; font-size: 1.5rem; line-height: 1.3; }
+.study-steps p, .study-app p, .study-sources p { max-width: 42rem; margin: 0; line-height: 1.75; }
+.study-plan { max-width: 800px; padding: 2rem 0; border-top: 2px solid var(--ink); }
+.study-plan > p { line-height: 1.6; }
+.study-plan dl { margin: 2rem 0 0; }
+.study-plan dl > div { display: grid; grid-template-columns: 7rem minmax(0, 1fr); align-items: baseline; gap: 1rem; margin: 1.8rem 0; }
+.study-plan dt { font-weight: 700; }
+.study-plan dd { margin: 0; }
+.write-line { display: block; border-bottom: 1px solid var(--ink); height: 1.5rem; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }
+.study-app { max-width: 800px; margin: 3rem 0; padding: 2rem 0; border-top: 1px solid var(--ink); }
+.study-app .eyebrow { margin-bottom: 1rem; }
+.study-app p + p { margin-top: 1rem; }
+.study-app .primary-link { margin-top: 1.5rem; border: 1px solid var(--ink); }
+.study-sources { max-width: 800px; padding-top: 2rem; border-top: 1px solid var(--ink); }
+.study-sources h2 { font-size: 1.1rem; }
+.study-sources p { font-size: .9rem; }
+
+@media (max-width: 600px) {
+  .study-main { padding: 8rem 1.5rem 4rem; }
+  .study-heading { margin-bottom: 3rem; }
+  .study-steps li { padding-left: 2.5rem; }
+  .study-plan dl > div { grid-template-columns: 1fr; gap: .1rem; }
+}
+
+@media print {
+  @page { margin: 15mm; }
+  body:has(.study-main), .site-shell:has(.study-main) { min-width: 0; background: white; color: black; }
+  .site-shell:has(.study-main) { overflow: visible; }
+  .site-shell:has(.study-main) :is(.site-header, .site-footer, .skip-link, .study-print, .study-app) { display: none; }
+  .study-main { max-width: none; padding: 0; color: black; font-size: 10pt; }
+  .study-heading { margin-bottom: 1.2rem; }
+  .study-heading h1 { font-size: 32pt; margin: .5rem 0; }
+  .study-heading h1 br { display: none; }
+  .study-lede { font-size: 11pt; max-width: none; margin: .5rem 0; }
+  .study-main h2 { font-size: 13pt; margin-bottom: .4rem; }
+  .study-steps { margin-bottom: 1rem; }
+  .study-steps li { padding: .7rem 0 .7rem 2rem; break-inside: avoid; }
+  .study-steps li::before { top: .8rem; }
+  .study-steps p, .study-sources p { line-height: 1.45; max-width: none; }
+  .study-plan { padding: .7rem 0; break-inside: avoid; }
+  .study-plan dl { margin-top: .8rem; }
+  .study-plan dl > div { grid-template-columns: 6rem minmax(0, 1fr); gap: .5rem; margin: .8rem 0; }
+  .write-line { height: 1rem; }
+  .study-sources { padding-top: .7rem; }
+  .study-sources p { font-size: 8pt; }
 }
 
 .tone-paper,
