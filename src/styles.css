@@ -1264,6 +1264,8 @@ summary:focus-visible {
   .study-plan dl > div { grid-template-columns: 1fr; gap: .1rem; }
 }
 
+.study-print-source { display: none; }
+
 @media print {
   @page { margin: 15mm; }
   body:has(.study-main), .site-shell:has(.study-main) { min-width: 0; background: white; color: black; }
@@ -1285,6 +1287,7 @@ summary:focus-visible {
   .write-line { height: 1rem; }
   .study-sources { padding-top: .7rem; }
   .study-sources p { font-size: 8pt; }
+  .study-sources .study-print-source { display: block; margin-top: .5em; font-size: 10pt; }
 }
 
 .tone-paper,

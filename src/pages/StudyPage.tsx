@@ -51,6 +51,7 @@ export function StudyPage() {
         <section className="study-sources" aria-labelledby="study-sources-title">
           <h2 id="study-sources-title">More study guidance</h2>
           <p>For more on specific tasks, active study and planned breaks, explore the <a href="https://learningcenter.unc.edu/tips-and-tools/studying-101-study-smarter-not-harder/">UNC Learning Center’s study guide</a> and <a href="https://lsc.cornell.edu/managing-time/">Cornell’s time-management guide</a>. These are independent resources, not endorsements of Airlock.</p>
+          <p className="study-print-source">Get another copy at <a href="https://airlockapp.org/study/">airlockapp.org/study/</a></p>
         </section>
       </main>
     </SiteChrome>
