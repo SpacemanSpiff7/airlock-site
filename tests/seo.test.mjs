@@ -10,7 +10,7 @@ const origin = 'https://airlockapp.org';
 const pages = [
   ['/', 'index.html', ['Breathe before', 'App Blocking is optional:', 'The flower can change as the day goes.', 'Unlock for a few minutes.', 'Your breathing and blocking records stay on your iPhone.']],
   ['/privacy/', 'privacy/index.html', ['Data stored on your device', 'Optional developer tips', 'Optional Apple analytics and diagnostics', 'Retention and deletion', 'contact@airlockapp.org']],
-  ['/support/', 'support/index.html', ['Tell us what happened.', 'Why does Airlock need Screen Time permission?', 'Where is my data?', 'How do I report a bug?', 'contact@airlockapp.org']],
+  ['/support/', 'support/index.html', ['Tell us what happened.', 'Why does Airlock need Screen Time permission?', 'Where is my data?', 'How do I report a bug?', 'Use Airtime opens Airlock directly', 'You can also open Airlock yourself.', 'Unlock for 5 min', 'contact@airlockapp.org']],
   ['/study/', 'study/index.html', ['Name one concrete task.', 'Your next block', 'Return at', 'Next action', 'iOS 26 or later', 'no subscription', 'not endorsements of Airlock']]
 ];
 const server = await createServer({ configLoader: 'runner', server: { middlewareMode: true, ws: false }, appType: 'custom' });

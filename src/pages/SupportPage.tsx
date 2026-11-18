@@ -7,7 +7,7 @@ export function SupportPage() {
         <header className="support-heading">
           <p className="eyebrow">Support</p>
           <h1>Tell us what happened.</h1>
-          <p>Include your iOS version, Airlock version, and the steps that led to the problem.</p>
+          <p>Include your iPhone model, iOS version, Airlock version, and the steps that led to the problem.</p>
           <a className="email-link" href="mailto:contact@airlockapp.org?subject=Airlock%20support">
             contact@airlockapp.org <span aria-hidden="true">↗</span>
           </a>
@@ -42,10 +42,23 @@ export function SupportPage() {
           </details>
 
           <details>
-            <summary>An app did not block or unlock correctly.</summary>
+            <summary>Why can I still open an app I chose to block?</summary>
             <p>
-              Check that Screen Time and Notifications are allowed for Airlock, then restart the app. If the problem
-              continues, email us with your iPhone model and iOS version.
+              Open Greenhouse in Airlock to check whether an unlock is active. If no unlock is active,
+              open Airlock’s Settings. Under Permissions, check that Screen Time is allowed. Under Unlock Settings,
+              check your selection in Apps &amp; websites and save any changes.
+            </p>
+          </details>
+
+          <details>
+            <summary>I tapped Use Airtime. How do I finish unlocking?</summary>
+            <p>
+              On iOS 26.5 or later, Use Airtime opens Airlock directly. On iOS 26.0 through 26.4, tap the Airlock
+              notification if it appears. You can also open Airlock yourself.
+            </p>
+            <p>
+              In Greenhouse, choose how long you need, then tap the matching button, such as <strong>Unlock for 5 min</strong>. If you need more Airtime, earn it in Breathe. If Morning Lock is
+              active, complete its breathing exercise or wait timer first.
             </p>
           </details>
 
