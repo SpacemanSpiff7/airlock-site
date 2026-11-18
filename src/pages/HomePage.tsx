@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useContext } from 'react';
 import dayScreen from '../assets/flower-screen-healthy.webp';
 import breathePoster from '../assets/screens/breathe-active.png';
 import greenhouseScreen from '../assets/screens/greenhouse.png';
@@ -9,16 +9,10 @@ import GhostFibers from '../components/GhostFibers';
 import { LoopingVideo } from '../components/LoopingVideo';
 import { PhoneFrame } from '../components/PhoneFrame';
 import { SiteChrome } from '../components/SiteChrome';
-import { appStoreUrlForSource } from '../attribution';
+import { CampaignLinks } from '../attribution';
 
 export function HomePage() {
-  const [source, setSource] = useState<string | null>(null);
-
-  useEffect(() => {
-    setSource(new URLSearchParams(window.location.search).get('utm_source'));
-  }, []);
-
-  const appStoreUrl = appStoreUrlForSource(source);
+  const { appStoreUrl, siteSearch } = useContext(CampaignLinks);
 
   return (
     <SiteChrome current="home">
@@ -189,7 +183,7 @@ export function HomePage() {
             <p>No tracking</p>
             <p>No ads</p>
           </div>
-          <a className="round-link" href="./privacy/">
+          <a className="round-link" href={`./privacy/${siteSearch}`}>
             Read the privacy policy <span aria-hidden="true">↗</span>
           </a>
         </section>

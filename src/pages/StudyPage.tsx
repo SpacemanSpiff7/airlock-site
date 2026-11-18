@@ -1,7 +1,9 @@
 import { SiteChrome } from '../components/SiteChrome';
-import { appStoreUrlForSource } from '../attribution';
+import { useContext } from 'react';
+import { CampaignLinks } from '../attribution';
 
 export function StudyPage() {
+  const { appStoreUrl } = useContext(CampaignLinks);
   return (
     <SiteChrome current="study" tone="paper">
       <main id="main" className="study-main">
@@ -43,7 +45,7 @@ export function StudyPage() {
           <h2 id="study-app-title">Want guided breathing, too?</h2>
           <p>Airlock is an iPhone app for iOS 26 or later. Guided breathing works on its own. With optional App Blocking, choose apps or websites, breathe to earn Airtime, choose an unlock duration, then tap Unlock.</p>
           <p>All features are free, with optional tips and no subscription.</p>
-          <a className="primary-link" href={appStoreUrlForSource(null)}>Download Airlock free <span aria-hidden="true">↗</span></a>
+          <a className="primary-link" href={appStoreUrl}>Download Airlock free <span aria-hidden="true">↗</span></a>
         </aside>
 
         <section className="study-sources" aria-labelledby="study-sources-title">

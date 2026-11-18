@@ -1,3 +1,5 @@
+import { createElement } from 'react';
+import { renderToStaticMarkup } from 'react-dom/server';
 import assert from 'node:assert/strict';
 import { after, test } from 'node:test';
 import { readFile, stat } from 'node:fs/promises';
@@ -14,7 +16,7 @@ const pages = [
 const server = await createServer({ configLoader: 'runner', server: { middlewareMode: true, ws: false }, appType: 'custom' });
 after(() => server.close());
 const { render } = await server.ssrLoadModule('/src/entry-server.tsx');
-const { appStoreUrlForSource } = await server.ssrLoadModule('/src/attribution.ts');
+const { CampaignLinks, campaignLinksForSource } = await server.ssrLoadModule('/src/attribution.ts');
 const manifest = JSON.parse(await readFile('dist/.vite/manifest.json', 'utf8'));
 const decode = value => value.replaceAll('&amp;', '&');
 
@@ -74,7 +76,9 @@ test('robots permits crawling and sitemap contains exactly the canonical pages',
 
 test('default and Instagram attribution preserve the exact App Store destination and campaign', () => {
   for (const [source, campaign] of [[null, 'website'], ['', 'website'], ['other', 'website'], ['ig', 'instagram_bio'], ['instagram', 'instagram_bio'], [' IG ', 'instagram_bio']]) {
-    const url = new URL(appStoreUrlForSource(source));
+    const links = campaignLinksForSource(source);
+    const url = new URL(links.appStoreUrl);
+    assert.equal(links.siteSearch, campaign === 'instagram_bio' ? '?utm_source=ig' : '');
     assert.equal(url.origin + url.pathname, 'https://apps.apple.com/app/apple-store/id6808816509');
     assert.equal(url.searchParams.get('pt'), '128785261');
     assert.equal(url.searchParams.get('ct'), campaign);
@@ -82,9 +86,27 @@ test('default and Instagram attribution preserve the exact App Store destination
   }
 });
 
+test('an Instagram visitor can open the study guide and keep the same download campaign', async () => {
+  const { HomePage } = await server.ssrLoadModule('/src/pages/HomePage.tsx');
+  const { StudyPage } = await server.ssrLoadModule('/src/pages/StudyPage.tsx');
+  const renderLinks = (Page, source) => {
+    const value = campaignLinksForSource(source);
+    const html = renderToStaticMarkup(createElement(CampaignLinks.Provider, { value }, createElement(Page)));
+    return [...html.matchAll(/href="([^"]+)"/g)].map(match => match[1].replaceAll('&amp;', '&'));
+  };
+  const home = renderLinks(HomePage, 'Instagram');
+  const guide = home.find(href => href.startsWith('./study/'));
+  assert.equal(guide, './study/?utm_source=ig');
+  const study = renderLinks(StudyPage, new URL(guide, origin).searchParams.get('utm_source'));
+  assert.ok(study.includes(campaignLinksForSource('ig').appStoreUrl));
+  assert.ok(study.includes('../?utm_source=ig'));
+  assert.ok(study.filter(href => href.includes('cornell.edu') || href.includes('unc.edu')).every(href => !href.includes('utm_source')));
+  assert.ok(renderLinks(StudyPage, 'other').includes(campaignLinksForSource(null).appStoreUrl));
+});
+
 test('first render stays deterministic independently of the campaign query', () => {
   const baseline = render('/');
-  assert.ok(baseline.includes(appStoreUrlForSource(null).replaceAll('&', '&amp;')));
+  assert.ok(baseline.includes(campaignLinksForSource(null).appStoreUrl.replaceAll('&', '&amp;')));
   // Reading the campaign waits for the effect, so initial hydration can match the static document.
   for (const search of ['', '?utm_source=ig', '?utm_source=instagram']) {
     globalThis.window = { location: { search } };

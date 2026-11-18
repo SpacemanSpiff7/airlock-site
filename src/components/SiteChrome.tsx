@@ -1,4 +1,5 @@
-import type { ReactNode } from 'react';
+import { useContext, type ReactNode } from 'react';
+import { CampaignLinks } from '../attribution';
 import appIcon from '../assets/app-icon.png';
 
 type PageName = 'home' | 'privacy' | 'support' | 'study';
@@ -18,7 +19,8 @@ const routes = {
 
 export function SiteChrome({ current, children, tone = 'night' }: SiteChromeProps) {
   const inside = current !== 'home';
-  const link = (page: PageName) => (inside ? routes[page].fromInside : routes[page].fromHome);
+  const { siteSearch } = useContext(CampaignLinks);
+  const link = (page: PageName) => (inside ? routes[page].fromInside : routes[page].fromHome) + siteSearch;
 
   return (
     <div className={`site-shell tone-${tone}`}>
