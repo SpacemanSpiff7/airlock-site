@@ -48,6 +48,9 @@ export function SiteChrome({ current, children, tone = 'night' }: SiteChromeProp
           <a href={link('study')} aria-current={current === 'study' ? 'page' : undefined}>Study guide</a>
           <a href={link('privacy')}>Privacy</a>
           <a href={link('support')}>Support</a>
+          {current === 'home' && (
+            <a href="https://www.instagram.com/airlockapp/" rel="noreferrer">Instagram</a>
+          )}
         </div>
       </footer>
     </div>
