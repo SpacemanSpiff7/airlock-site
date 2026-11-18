@@ -7,9 +7,9 @@ export function SupportPage() {
         <header className="support-heading">
           <p className="eyebrow">Support</p>
           <h1>Tell us what happened.</h1>
-          <p>Include your iPhone model, iOS version, Airlock version, and the steps that led to the problem.</p>
+          <p>Email us for help, or share what you tried first in Airlock and how it went.</p>
           <a className="email-link" href="mailto:contact@airlockapp.org?subject=Airlock%20support">
-            contact@airlockapp.org <span aria-hidden="true">↗</span>
+            contact@<wbr />airlockapp.org <span aria-hidden="true">↗</span>
           </a>
         </header>
 
@@ -65,8 +65,8 @@ export function SupportPage() {
           <details>
             <summary>How do I report a bug?</summary>
             <p>
-              Tell us what you did, what you expected, and what happened. Add a screenshot only if it helps, and
-              leave out private information.
+              Include your iPhone model, iOS version, and Airlock version. Tell us the steps you took, what you
+              expected, and what happened. Add a screenshot only if it helps, and leave out private information.
             </p>
           </details>
         </section>

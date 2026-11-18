@@ -1408,6 +1408,7 @@ summary:focus-visible {
 }
 
 .support-heading {
+  container-type: inline-size;
   position: relative;
   width: min(100%, 1100px);
   min-height: 560px;
@@ -1449,6 +1450,25 @@ summary:focus-visible {
   padding: 1rem 0;
   border-bottom: 2px solid currentColor;
   font-size: clamp(1rem, 2vw, 1.35rem);
+}
+
+.support-heading .email-link {
+  display: inline-block;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+
+.support-heading .email-link span {
+  display: inline-block;
+  margin-inline-start: 0.3em;
+}
+
+@container (max-width: 15em) {
+  .support-main .support-heading h1 {
+    font-size: clamp(1.65rem, 21cqi, 2.3rem);
+    line-height: 1;
+    overflow-wrap: anywhere;
+  }
 }
 
 .faq {
