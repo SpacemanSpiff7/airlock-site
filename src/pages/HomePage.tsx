@@ -2,6 +2,7 @@ import { useContext } from 'react';
 import dayScreen from '../assets/flower-screen-healthy.webp';
 import breathePoster from '../assets/screens/breathe-active.png';
 import greenhouseScreen from '../assets/screens/greenhouse.png';
+import unlockScreen from '../assets/screens/greenhouse-unlock.webp';
 import breatheVideo from '../assets/video/breathe.mp4';
 import CurvedLoop from '../components/CurvedLoop';
 import { FlowerLifecycle } from '../components/FlowerLifecycle';
@@ -153,21 +154,20 @@ export function HomePage() {
               <p className="step-number">03</p>
               <h3>Unlock for a few minutes.</h3>
               <p>
-                Choose an unlock time from 5 to 30 minutes. When the unlock time ends, your selected apps and websites
-                are blocked again automatically.
+                Choose 5 to 30 minutes, then tap the unlock button to use that much Airtime.
+                When time runs out, Airlock blocks your selected apps and websites again.
               </p>
             </div>
-            <div
-              className="unlock-clock"
-              role="img"
-              aria-label="Unlock times range from 5 to 30 minutes, then the selected apps and websites are blocked again"
-            >
-              <span className="unlock-orbit unlock-orbit-one" aria-hidden="true" />
-              <span className="unlock-orbit unlock-orbit-two" aria-hidden="true" />
-              <strong>5–30</strong>
-              <small>minutes</small>
-              <p>then blocked again automatically</p>
-            </div>
+            <figure className="unlock-example">
+              <img
+                src={unlockScreen}
+                width={854}
+                height={770}
+                loading="lazy"
+                alt="45 minutes of Airtime available. The screen shows “Locked” and the button “Unlock for 15 min”."
+              />
+              <figcaption>Airlock’s Greenhouse screen with 15 minutes selected.</figcaption>
+            </figure>
           </article>
         </section>
 
