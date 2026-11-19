@@ -1016,6 +1016,12 @@ summary:focus-visible {
   grid-template-columns: minmax(320px, 1fr) minmax(340px, 0.9fr);
 }
 
+.unlock-download {
+  min-height: 44px;
+  margin-top: 1rem;
+  color: var(--paper);
+}
+
 .unlock-example {
   width: min(100%, 27rem);
   margin: 0;

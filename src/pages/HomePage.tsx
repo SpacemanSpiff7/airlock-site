@@ -152,11 +152,14 @@ export function HomePage() {
           <article className="story-row story-unlock">
             <div className="step-copy">
               <p className="step-number">03</p>
-              <h3>Unlock for a few minutes.</h3>
+              <h3 id="unlock">Unlock for a few minutes.</h3>
               <p>
                 Choose 5 to 30 minutes, then tap the unlock button to use that much Airtime.
                 When time runs out, Airlock blocks your selected apps and websites again.
               </p>
+              <a className="text-link unlock-download" href={appStoreUrl} target="_blank" rel="noreferrer">
+                Download Airlock free <span aria-hidden="true">↗</span>
+              </a>
             </div>
             <figure className="unlock-example">
               <img
