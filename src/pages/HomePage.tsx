@@ -140,12 +140,15 @@ export function HomePage() {
           >
             <div className="step-copy">
               <p className="step-number">02</p>
-              <h3>Breathe and earn Airtime.</h3>
+              <h3 id="breathe">Breathe and earn Airtime.</h3>
               <p>
-                Finish a guided session to add Airtime. You can change the session length, breathing exercise, pace,
+                Finish a guided session in Airlock to add Airtime. You can change the session length, breathing exercise, pace,
                 and haptics.
               </p>
               <p className="real-app-note">Recorded in an earlier version of Airlock.</p>
+              <a className="text-link" href="https://www.instagram.com/airlockapp/reel/DfNU9EsAreW/" rel="noreferrer">
+                Take three breaths on Instagram <span aria-hidden="true">↗</span>
+              </a>
             </div>
           </LoopingVideo>
 

@@ -1016,6 +1016,7 @@ summary:focus-visible {
   grid-template-columns: minmax(320px, 1fr) minmax(340px, 0.9fr);
 }
 
+.loop-story-copy .text-link,
 .unlock-download {
   min-height: 44px;
   margin-top: 1rem;
@@ -1730,11 +1731,13 @@ summary:focus-visible {
     gap: 3.5rem;
   }
 
+  .loop-story,
   .story-unlock {
     width: calc(100% - min(2.5rem, 10vw));
     grid-template-columns: minmax(0, 1fr);
   }
 
+  .product-story .loop-story .step-copy h3,
   .story-unlock .step-copy h3 {
     font-size: clamp(2rem, 1.8rem + 5vw, 3.1rem);
     overflow-wrap: anywhere;
