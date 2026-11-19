@@ -128,3 +128,16 @@ test('first render stays deterministic independently of the campaign query', () 
   assert.equal(new Set(ids).size, ids.length);
   assert.ok(ids[0].includes('airlock-'));
 });
+
+test('shared study guide uses a public worksheet image at its declared dimensions', async () => {
+  const html = await readFile('dist/study/index.html', 'utf8');
+  const imageUrl = origin + '/study/worksheet-preview.png';
+  assert.ok(html.includes(`property="og:image" content="${imageUrl}"`));
+  assert.ok(html.includes(`name="twitter:image" content="${imageUrl}"`));
+  assert.ok(html.includes('name="twitter:card" content="summary_large_image"'));
+  const png = await readFile('dist/study/worksheet-preview.png');
+  assert.equal(png.toString('hex', 0, 8), '89504e470d0a1a0a');
+  assert.ok(html.includes(`property="og:image:width" content="${png.readUInt32BE(16)}"`));
+  assert.ok(html.includes(`property="og:image:height" content="${png.readUInt32BE(20)}"`));
+  assert.match(html, /property="og:image:alt" content="[^"]*worksheet[^"]+"/i);
+});
