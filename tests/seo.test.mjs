@@ -74,6 +74,16 @@ test('robots permits crawling and sitemap contains exactly the canonical pages',
   assert.deepEqual([...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map(match => match[1]), pages.map(([route]) => origin + route));
 });
 
+test('the study guide offers both paper sizes as direct downloads before JavaScript', async () => {
+  const html = await readFile('dist/study/index.html', 'utf8');
+  for (const [size, label] of [['letter', 'US Letter'], ['a4', 'A4']]) {
+    const href = `/study/airlock-study-guide-${size}.pdf`;
+    assert.ok(html.includes(`<a href="${href}" download="">Download ${label} PDF</a>`));
+    const file = await readFile(resolve('dist', `.${href}`));
+    assert.equal(file.toString('ascii', 0, 5), '%PDF-');
+  }
+});
+
 test('default and Instagram attribution preserve the exact App Store destination and campaign', () => {
   for (const [source, campaign] of [[null, 'website'], ['', 'website'], ['other', 'website'], ['ig', 'instagram_bio'], ['instagram', 'instagram_bio'], [' IG ', 'instagram_bio']]) {
     const links = campaignLinksForSource(source);

@@ -11,7 +11,11 @@ export function StudyPage() {
           <p className="eyebrow">A study guide from Airlock</p>
           <h1>Start with <br />one task.</h1>
           <p className="study-lede">Choose a small piece of work, a stop point, and a way back after a break. You can use this guide with paper and a pen.</p>
-          <button className="study-print" onClick={() => window.print()}>Print this guide</button>
+          <div className="study-actions">
+            <button className="study-print" onClick={() => window.print()}>Print this guide</button>
+            <a href="/study/airlock-study-guide-letter.pdf" download>Download US Letter PDF</a>
+            <a href="/study/airlock-study-guide-a4.pdf" download>Download A4 PDF</a>
+          </div>
         </header>
 
         <ol className="study-steps" aria-label="Plan your next study block">

@@ -1221,9 +1221,10 @@ summary:focus-visible {
   letter-spacing: -.05em;
 }
 .study-lede { max-width: 37rem; font-size: 1.2rem; line-height: 1.65; }
+.study-actions { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem 1.5rem; margin-top: 1rem; }
+.study-actions a { display: inline-flex; align-items: center; min-height: 44px; }
 .study-print {
   min-height: 44px;
-  margin-top: 1rem;
   padding: .7rem 1rem;
   color: var(--ink);
   background: transparent;
@@ -1270,7 +1271,7 @@ summary:focus-visible {
   @page { margin: 15mm; }
   body:has(.study-main), .site-shell:has(.study-main) { min-width: 0; background: white; color: black; }
   .site-shell:has(.study-main) { overflow: visible; }
-  .site-shell:has(.study-main) :is(.site-header, .site-footer, .skip-link, .study-print, .study-app) { display: none; }
+  .site-shell:has(.study-main) :is(.site-header, .site-footer, .skip-link, .study-actions, .study-app) { display: none; }
   .study-main { max-width: none; padding: 0; color: black; font-size: 10pt; }
   .study-heading { margin-bottom: 1.2rem; }
   .study-heading h1 { font-size: 32pt; margin: .5rem 0; }
