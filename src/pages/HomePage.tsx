@@ -142,7 +142,7 @@ export function HomePage() {
               <p className="step-number">02</p>
               <h3 id="breathe">Breathe and earn Airtime.</h3>
               <p>
-                Finish a guided session in Airlock to add Airtime. You can change the session length, breathing exercise, pace,
+                By default, 15 seconds of guided breathing in Airlock earns 5 minutes of Airtime. You can change the session length, breathing exercise, pace,
                 and haptics.
               </p>
               <p className="real-app-note">Recorded in an earlier version of Airlock.</p>
