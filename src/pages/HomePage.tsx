@@ -10,10 +10,10 @@ import GhostFibers from '../components/GhostFibers';
 import { LoopingVideo } from '../components/LoopingVideo';
 import { PhoneFrame } from '../components/PhoneFrame';
 import { SiteChrome } from '../components/SiteChrome';
-import { CampaignLinks } from '../attribution';
+import { CampaignLinks, flowerReelLink } from '../attribution';
 
 export function HomePage() {
-  const { appStoreUrl, siteSearch } = useContext(CampaignLinks);
+  const { appStoreUrl, siteSearch, secondaryHeroLink } = useContext(CampaignLinks);
 
   return (
     <SiteChrome current="home">
@@ -60,8 +60,8 @@ export function HomePage() {
               >
                 Download Airlock free <span aria-hidden="true">↗</span>
               </a>
-              <a className="secondary-link" href="#how-it-works">
-                Meet Airlock <span aria-hidden="true">↓</span>
+              <a className="secondary-link" href={secondaryHeroLink.href} rel="noreferrer">
+                {secondaryHeroLink.label} <span aria-hidden="true">{secondaryHeroLink.arrow}</span>
               </a>
             </div>
             <p className="availability">
@@ -146,8 +146,8 @@ export function HomePage() {
                 and haptics.
               </p>
               <p className="real-app-note">Recorded in an earlier version of Airlock.</p>
-              <a className="text-link" href="https://www.instagram.com/airlockapp/reel/DfNU9EsAreW/" rel="noreferrer">
-                Take three breaths on Instagram <span aria-hidden="true">↗</span>
+              <a className="text-link" href={flowerReelLink.href} rel="noreferrer">
+                {flowerReelLink.label} <span aria-hidden="true">{flowerReelLink.arrow}</span>
               </a>
             </div>
           </LoopingVideo>

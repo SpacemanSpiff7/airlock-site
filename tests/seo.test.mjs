@@ -122,6 +122,25 @@ test('default and Instagram attribution preserve the exact App Store destination
   }
 });
 
+test('the Instagram homepage offers the published flower exercise after the download link', async () => {
+  const { HomePage } = await server.ssrLoadModule('/src/pages/HomePage.tsx');
+  const exercise = 'https://www.instagram.com/airlockapp/reel/DfNU9EsAreW/';
+  for (const [source, expectedHref, label] of [
+    [null, '#how-it-works', 'Meet Airlock'],
+    ['newsletter', '#how-it-works', 'Meet Airlock'],
+    ['ig', exercise, 'Take three breaths on Instagram'],
+    ['Instagram', exercise, 'Take three breaths on Instagram']
+  ]) {
+    const value = campaignLinksForSource(source);
+    const page = renderToStaticMarkup(createElement(CampaignLinks.Provider, { value }, createElement(HomePage)));
+    const hero = decode(page.match(/<div class="hero-actions">(.*?)<\/div>/s)[1]);
+    const links = [...hero.matchAll(/<a [^>]*href="([^"]+)"[^>]*>(.*?)<\/a>/gs)];
+    assert.deepEqual(links.map(link => link[1]), [value.appStoreUrl, expectedHref]);
+    assert.ok(links[0][2].startsWith('Download Airlock free'));
+    assert.ok(links[1][2].startsWith(label));
+  }
+});
+
 test('an Instagram visitor can open the study guide and keep the same download campaign', async () => {
   const { HomePage } = await server.ssrLoadModule('/src/pages/HomePage.tsx');
   const { StudyPage } = await server.ssrLoadModule('/src/pages/StudyPage.tsx');
