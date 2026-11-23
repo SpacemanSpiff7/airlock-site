@@ -74,6 +74,15 @@ test('robots permits crawling and sitemap contains exactly the canonical pages',
   assert.deepEqual([...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map(match => match[1]), pages.map(([route]) => origin + route));
 });
 
+test('the breathing demo offers a static first frame before motion preferences are known', async () => {
+  const html = await readFile('dist/index.html', 'utf8');
+  const video = html.match(/<video\b[^>]*>/)?.[0];
+  assert.ok(video, 'Missing homepage breathing demo');
+  assert.match(video, /poster="[^"]+"/);
+  assert.match(video, /preload="none"/);
+  assert.doesNotMatch(video, /\bautoplay\b/i);
+});
+
 test('the study guide offers both paper sizes as direct downloads before JavaScript', async () => {
   const html = await readFile('dist/study/index.html', 'utf8');
   for (const [size, label] of [['letter', 'US Letter'], ['a4', 'A4']]) {

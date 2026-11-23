@@ -17,7 +17,7 @@ export function LoopingVideo({ src, poster, label, children }: LoopingVideoProps
     if (!section || !video) return;
 
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-    let isVisible = true;
+    let isVisible = false;
     let isPageVisible = !document.hidden;
 
     const syncPlayback = () => {
@@ -66,11 +66,10 @@ export function LoopingVideo({ src, poster, label, children }: LoopingVideoProps
             src={src}
             poster={poster}
             aria-label={label}
-            autoPlay
             loop
             muted
             playsInline
-            preload="auto"
+            preload="none"
           />
         </div>
       </div>
