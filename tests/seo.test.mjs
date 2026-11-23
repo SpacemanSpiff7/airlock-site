@@ -78,6 +78,19 @@ test('robots permits crawling and sitemap contains exactly the canonical pages',
   assert.deepEqual([...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map(match => match[1]), pages.map(([route]) => origin + route));
 });
 
+test('only the homepage offers the native Safari banner for Airlock', async () => {
+  for (const [route, file] of pages) {
+    const html = await readFile(`dist/${file}`, 'utf8');
+    const tags = html.match(/<meta\b[^>]*name="apple-itunes-app"[^>]*>/gi) ?? [];
+    assert.equal(tags.length, route === '/' ? 1 : 0, route);
+    if (route === '/') {
+      assert.ok(html.slice(0, html.indexOf('</head>')).includes(tags[0]));
+      const content = tags[0].match(/\bcontent="([^"]+)"/)[1];
+      assert.equal(decode(content), 'app-id=6808816509, affiliate-data=pt=128785261&ct=website_safari');
+    }
+  }
+});
+
 test('the breathing demo offers a static first frame before motion preferences are known', async () => {
   const html = await readFile('dist/index.html', 'utf8');
   const video = html.match(/<video\b[^>]*>/)?.[0];
