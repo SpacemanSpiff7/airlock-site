@@ -643,6 +643,7 @@ summary:focus-visible {
 
 .phone-frame img {
   width: 100%;
+  height: auto;
   border-radius: 2.48rem;
 }
 

@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import dayScreen from '../assets/flower-screen-healthy.webp';
 import breathePoster from '../assets/screens/breathe-active.png';
-import greenhouseScreen from '../assets/screens/greenhouse.png';
+import greenhouseScreen from '../assets/screens/greenhouse.webp';
 import unlockScreen from '../assets/screens/greenhouse-unlock.webp';
 import breatheVideo from '../assets/video/breathe.mp4';
 import CurvedLoop from '../components/CurvedLoop';
@@ -130,6 +130,9 @@ export function HomePage() {
             <PhoneFrame
               src={greenhouseScreen}
               alt="Airlock’s Greenhouse screen showing protection and available Airtime"
+              width={585}
+              height={1266}
+              loading="lazy"
             />
           </article>
 

@@ -100,6 +100,17 @@ test('the breathing demo offers a static first frame before motion preferences a
   assert.doesNotMatch(video, /\bautoplay\b/i);
 });
 
+test('the homepage defers the Greenhouse screenshot and reserves its space', async () => {
+  const html = await readFile('dist/index.html', 'utf8');
+  const asset = '/' + manifest['src/assets/screens/greenhouse.webp'].file;
+  const tag = html.match(/<img\b[^>]+>/g).find(image => image.includes(`src="${asset}"`));
+  assert.ok(tag);
+  assert.match(tag, /loading="lazy"/);
+  assert.match(tag, /width="585"/);
+  assert.match(tag, /height="1266"/);
+  assert.ok(!html.match(/<link\b[^>]+>/g).some(link => link.includes(`href="${asset}"`)));
+});
+
 test('the study guide offers both paper sizes as direct downloads before JavaScript', async () => {
   const html = await readFile('dist/study/index.html', 'utf8');
   for (const [size, label] of [['letter', 'US Letter'], ['a4', 'A4']]) {
