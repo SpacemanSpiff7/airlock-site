@@ -13,8 +13,8 @@ export function StudyPage() {
           <p className="study-lede">Choose a small piece of work, a stop point, and a way back after a break. You can use this guide with paper and a pen.</p>
           <div className="study-actions">
             <button className="study-print" onClick={() => window.print()}>Print this guide</button>
-            <a href="/study/airlock-study-guide-letter.pdf" download>Download US Letter PDF</a>
-            <a href="/study/airlock-study-guide-a4.pdf" download>Download A4 PDF</a>
+            <a href="/study/airlock-study-guide-letter.pdf" download>Download fillable US Letter PDF</a>
+            <a href="/study/airlock-study-guide-a4.pdf" download>Download fillable A4 PDF</a>
           </div>
         </header>
 

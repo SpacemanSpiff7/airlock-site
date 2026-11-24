@@ -134,9 +134,10 @@ test('the study guide offers both paper sizes as direct downloads before JavaScr
   const html = await readFile('dist/study/index.html', 'utf8');
   for (const [size, label] of [['letter', 'US Letter'], ['a4', 'A4']]) {
     const href = `/study/airlock-study-guide-${size}.pdf`;
-    assert.ok(html.includes(`<a href="${href}" download="">Download ${label} PDF</a>`));
+    assert.ok(html.includes(`<a href="${href}" download="">Download fillable ${label} PDF</a>`));
     const file = await readFile(resolve('dist', `.${href}`));
     assert.equal(file.toString('ascii', 0, 5), '%PDF-');
+    assert.equal((file.toString('latin1').match(/\/FT \/Tx\b/g) ?? []).length, 4);
   }
 });
 
