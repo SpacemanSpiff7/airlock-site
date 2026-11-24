@@ -91,6 +91,25 @@ test('only the homepage offers the native Safari banner for Airlock', async () =
   }
 });
 
+test('the public homepage identifies the same app and Instagram account as its visible links', async () => {
+  const html = await readFile('dist/index.html', 'utf8');
+  const head = html.slice(0, html.indexOf('</head>'));
+  const records = [...head.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)]
+    .map(match => JSON.parse(match[1]))
+    .filter(record => record['@type'] === 'MobileApplication');
+  assert.equal(records.length, 1);
+  const [app] = records;
+  const store = 'https://apps.apple.com/us/app/airlock-breathe-focus/id6808816509';
+  const instagram = 'https://www.instagram.com/airlockapp/';
+  assert.equal(app['@context'], 'https://schema.org');
+  assert.equal(app.name, 'Airlock: Breathe & Focus');
+  assert.equal(app.url, origin + '/');
+  assert.equal(app.identifier, '6808816509');
+  assert.deepEqual(new Set(app.sameAs), new Set([store, instagram]));
+  assert.ok(html.includes(`href="${instagram}"`));
+  assert.ok(html.includes(`href="https://apps.apple.com/app/apple-store/id${app.identifier}?`));
+});
+
 test('the breathing demo offers a static first frame before motion preferences are known', async () => {
   const html = await readFile('dist/index.html', 'utf8');
   const video = html.match(/<video\b[^>]*>/)?.[0];
