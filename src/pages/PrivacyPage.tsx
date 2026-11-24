@@ -11,7 +11,7 @@ export function PrivacyPage() {
             Airlock keeps its breathing and blocking records on your iPhone. We cannot see your breathing history,
             Airtime, or Screen Time choices.
           </p>
-          <p className="updated">Last updated: 2026-09-25</p>
+          <p className="updated">Last updated: 2026-11-24</p>
         </header>
 
         <article className="document-body">
@@ -62,6 +62,11 @@ export function PrivacyPage() {
               request access from a blocked app. These notifications are created on your iPhone. You can change
               permissions in iOS Settings.
             </p>
+            <p>
+              If you enable Live Activity timer in Unlock Settings, iOS can show your session countdown on Dynamic
+              Island, the Lock Screen, and Apple Watch. This optional display is off by default, runs locally without
+              push updates, and does not send your history to us. iOS controls where it appears.
+            </p>
           </section>
 
           <section>
@@ -99,23 +104,40 @@ export function PrivacyPage() {
           <section>
             <h2>Sharing</h2>
             <p>
-              Airlock does not upload your breathing and blocking records to us or third parties. Apple's optional
-              reporting is separate from those local records. Airlock contains no ads or tools that track you
-              across other companies' apps and websites.
+              Airlock automatically saves a local copy of its daily history in shared storage that companion apps
+              from the same developer can read on your iPhone. This includes dates, breathing time, Airtime used
+              and expired, daily flower outcomes, and your time zone. It does not include your Screen Time
+              selections, PIN record, or Airlock settings. This copy is not uploaded to a server.
+            </p>
+            <p>
+              <strong>Settings → About → Export history</strong> creates a JSON file of your daily history. You choose
+              where to save or share it using the iOS share sheet. A destination you choose may send or store that
+              file outside your iPhone under its own privacy policy.
+            </p>
+            <p>
+              Airlock does not otherwise upload your breathing and blocking records to us or third parties.
+              Apple's optional reporting is separate from those local records. Airlock contains no ads or tools
+              that track you across other companies' apps and websites.
             </p>
           </section>
 
           <section>
             <h2>Retention and deletion</h2>
             <p>
-              Your Airlock data stays on your iPhone while the app is installed. Deleting Airlock removes the data
-              stored with the app. If you turn on PIN Protection, its secure verification record may remain in the iOS
-              Keychain after a reinstall. You can remove it using Airlock’s PIN reset before deleting the app.
+              Deleting Airlock removes data in its own app storage. A local shared-history copy can remain while
+              another app that uses the shared storage is installed. Deleting Airlock does not remove copies a
+              companion app has saved separately or files you exported; manage those copies in the app or service
+              where they are stored.
+            </p>
+            <p>
+              If you turn on PIN Protection, its secure verification record may remain in the iOS Keychain after a
+              reinstall. You can remove it using Airlock’s PIN reset before deleting the app.
               Deleting Airlock does not delete purchase records held by Apple.
             </p>
             <p>
-              We do not keep a copy of your local Airlock records, so we cannot view or delete them for you. Apple
-              manages information collected through its services under its own privacy policies.
+              We do not receive or keep a server copy of your local Airlock records, so we cannot view or remotely
+              delete them for you. Apple manages information collected through its services under its own privacy
+              policies.
             </p>
           </section>
 

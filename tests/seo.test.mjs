@@ -13,7 +13,15 @@ const pages = [
     'By default, 15 seconds of guided breathing in Airlock earns 5 minutes of Airtime.',
     'Unlock for a few minutes.', 'Your breathing and blocking records stay on your iPhone.'
   ]],
-  ['/privacy/', 'privacy/index.html', ['Data stored on your device', 'Optional developer tips', 'Optional Apple analytics and diagnostics', 'Retention and deletion', 'contact@airlockapp.org']],
+  ['/privacy/', 'privacy/index.html', [
+    'Last updated: 2026-11-24', 'Data stored on your device', 'Optional developer tips',
+    'Optional Apple analytics and diagnostics', 'Live Activity timer',
+    'Airlock automatically saves a local copy of its daily history in shared storage',
+    'It does not include your Screen Time selections, PIN record, or Airlock settings.',
+    'Settings → About → Export history', 'This copy is not uploaded to a server.',
+    'A local shared-history copy can remain while another app that uses the shared storage is installed.',
+    'Retention and deletion', 'contact@airlockapp.org'
+  ]],
   ['/support/', 'support/index.html', ['Tell us what happened.', 'Why does Airlock need Screen Time permission?', 'Where is my data?', 'How do I report a bug?', 'Use Airtime opens Airlock directly', 'You can also open Airlock yourself.', 'Unlock for 5 min', 'contact@airlockapp.org']],
   ['/study/', 'study/index.html', ['Name one concrete task.', 'Your next block', 'Return at', 'Next action', 'iOS 26 or later', 'no subscription', 'not endorsements of Airlock']]
 ];
