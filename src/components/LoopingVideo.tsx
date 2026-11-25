@@ -18,14 +18,28 @@ export function LoopingVideo({ src, poster, label, children }: LoopingVideoProps
 
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
     let isVisible = false;
-    let isPageVisible = !document.hidden;
+    let resumeWhenVisible = !reducedMotion.matches;
 
     const syncPlayback = () => {
-      const shouldPlay = isVisible && isPageVisible && !reducedMotion.matches;
+      if (!isVisible || document.hidden) {
+        if (!video.paused) {
+          resumeWhenVisible = !reducedMotion.matches;
+          video.pause();
+        }
+        return;
+      }
 
-      if (shouldPlay) {
-        void video.play().catch(() => undefined);
-      } else {
+      if (resumeWhenVisible) {
+        resumeWhenVisible = false;
+        void video.play().catch(() => {
+          // The browser may require the visitor to press Play.
+        });
+      }
+    };
+
+    const handleMotionChange = () => {
+      if (reducedMotion.matches) {
+        resumeWhenVisible = false;
         video.pause();
       }
     };
@@ -38,19 +52,13 @@ export function LoopingVideo({ src, poster, label, children }: LoopingVideoProps
       { rootMargin: '20% 0px', threshold: 0 }
     );
 
-    const handleVisibility = () => {
-      isPageVisible = !document.hidden;
-      syncPlayback();
-    };
-
-    document.addEventListener('visibilitychange', handleVisibility);
-    reducedMotion.addEventListener('change', syncPlayback);
+    document.addEventListener('visibilitychange', syncPlayback);
+    reducedMotion.addEventListener('change', handleMotionChange);
     observer.observe(section);
-    syncPlayback();
 
     return () => {
-      document.removeEventListener('visibilitychange', handleVisibility);
-      reducedMotion.removeEventListener('change', syncPlayback);
+      document.removeEventListener('visibilitychange', syncPlayback);
+      reducedMotion.removeEventListener('change', handleMotionChange);
       observer.disconnect();
       video.pause();
     };
@@ -66,6 +74,7 @@ export function LoopingVideo({ src, poster, label, children }: LoopingVideoProps
             src={src}
             poster={poster}
             aria-label={label}
+            controls
             loop
             muted
             playsInline

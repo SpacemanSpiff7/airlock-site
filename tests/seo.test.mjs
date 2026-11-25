@@ -119,10 +119,11 @@ test('the public homepage identifies the same app and Instagram account as its v
   assert.ok(html.includes(`href="https://apps.apple.com/app/apple-store/id${app.identifier}?`));
 });
 
-test('the breathing demo offers a static first frame before motion preferences are known', async () => {
+test('the breathing demo exposes playback controls and starts with a static first frame', async () => {
   const html = await readFile('dist/index.html', 'utf8');
   const video = html.match(/<video\b[^>]*>/)?.[0];
   assert.ok(video, 'Missing homepage breathing demo');
+  assert.match(video, /\bcontrols(?:=""|\s|>)/);
   assert.match(video, /poster="[^"]+"/);
   assert.match(video, /preload="none"/);
   assert.doesNotMatch(video, /\bautoplay\b/i);

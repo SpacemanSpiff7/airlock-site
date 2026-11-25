@@ -139,7 +139,7 @@ export function HomePage() {
           <LoopingVideo
             src={breatheVideo}
             poster={breathePoster}
-            label="Airlock breathing session recorded in an earlier app version, playing on a loop"
+            label="Airlock breathing session recorded in an earlier app version"
           >
             <div className="step-copy">
               <p className="step-number">02</p>
