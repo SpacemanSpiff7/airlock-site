@@ -11,6 +11,7 @@ const pages = [
   ['/', 'index.html', [
     'Breathe before', 'App Blocking is optional:', 'The flower can change as the day goes.',
     'By default, 15 seconds of guided breathing in Airlock earns 5 minutes of Airtime.',
+    'pause the session and tap <strong>End session</strong>',
     'Unlock for a few minutes.', 'Your breathing and blocking records stay on your iPhone.'
   ]],
   ['/privacy/', 'privacy/index.html', [
