@@ -6,7 +6,7 @@ function CampaignPage({ children }: { children: ReactNode }) {
   const [links, setLinks] = useState(() => campaignLinksForSource(null));
   useEffect(() => {
     const source = new URLSearchParams(window.location.search).get('utm_source');
-    setLinks(campaignLinksForSource(source));
+    setLinks(campaignLinksForSource(source, document.referrer));
   }, []);
   return <CampaignLinks.Provider value={links}>{children}</CampaignLinks.Provider>;
 }

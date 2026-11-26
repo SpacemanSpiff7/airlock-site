@@ -163,6 +163,19 @@ test('default and Instagram attribution preserve the exact App Store destination
   }
 });
 
+test('untagged visits from Instagram’s link redirect use the Instagram experience', () => {
+  const instagram = campaignLinksForSource('ig');
+  const website = campaignLinksForSource(null);
+  const redirect = 'https://l.instagram.com/';
+  assert.equal(campaignLinksForSource(null, redirect), instagram);
+  assert.equal(campaignLinksForSource(null, redirect + '?u=example'), instagram);
+  assert.equal(campaignLinksForSource('newsletter', redirect), website);
+  assert.equal(campaignLinksForSource('', redirect), website);
+  assert.equal(campaignLinksForSource(null, 'https://l.instagram.com.example.org/'), website);
+  assert.equal(campaignLinksForSource(null, 'https://airlockapp.org/'), website);
+  assert.equal(campaignLinksForSource(null, ''), website);
+});
+
 test('the Instagram homepage offers the published flower exercise after the download link', async () => {
   const { HomePage } = await server.ssrLoadModule('/src/pages/HomePage.tsx');
   const exercise = 'https://www.instagram.com/airlockapp/reel/DfNU9EsAreW/';

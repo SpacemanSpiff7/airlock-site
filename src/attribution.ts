@@ -20,7 +20,10 @@ const instagramLinks = {
 
 export const CampaignLinks = createContext(websiteLinks);
 
-export function campaignLinksForSource(source: string | null) {
+export function campaignLinksForSource(source: string | null, referrer = '') {
   const normalizedSource = source?.trim().toLowerCase();
-  return normalizedSource === 'ig' || normalizedSource === 'instagram' ? instagramLinks : websiteLinks;
+  const untaggedInstagramVisit = source === null && referrer.startsWith('https://l.instagram.com/');
+  return normalizedSource === 'ig' || normalizedSource === 'instagram' || untaggedInstagramVisit
+    ? instagramLinks
+    : websiteLinks;
 }
