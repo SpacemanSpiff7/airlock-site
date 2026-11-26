@@ -207,6 +207,8 @@ test('an Instagram visitor can open the study guide and keep the same download c
   const guide = home.find(href => href.startsWith('./study/'));
   assert.equal(guide, './study/?utm_source=ig');
   const study = renderLinks(StudyPage, new URL(guide, origin).searchParams.get('utm_source'));
+  assert.ok(study.includes('../?utm_source=ig#breathe'));
+  assert.ok(renderLinks(StudyPage, null).includes('../#breathe'));
   assert.ok(study.includes(campaignLinksForSource('ig').appStoreUrl));
   assert.ok(study.includes('../?utm_source=ig'));
   assert.ok(study.filter(href => href.includes('cornell.edu') || href.includes('unc.edu')).every(href => !href.includes('utm_source')));
